@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>IP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">    
+</head>
+
+<body>
+  <div class="main-content">
+  {{>header}}
+  <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster='../files/pics/nasa.jpg'
+    data-setup="{}"
+  >
+    <source src='../files/videos/nasa.mp4' type="video/mp4" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
+  </div>
+    {{>footer}}
+  <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+</body>
+</html>

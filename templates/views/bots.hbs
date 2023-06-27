@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Bots</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">    
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <p>These are some of my Telegram bots:</p>
+        <ul>
+	    <li><a class="links" href="https://t.me/getpostsbot">Get Posts</a></li>
+            <li><a class="links" href="https://t.me/Weather123123_bot">Weather BOT</a></li>
+	    <li><a class="links" href="https://t.me/GOLDENSHOPBOT_bot">Golden BOT</a></li>    
+            <li><a class="links" href="https://t.me/dota3331_bot">Dota BOT</a></li>       
+        </ul>
+	<br><p><strong>Get Posts</strong> lets you add several TG bots to parse posts and other information
+ 	from services/social networks to different TG channels. Currently you can add 4 bots, each bot will
+	parse from up to 5 sources and deliver information to up to 5 channels.</p>
+        <br><p><strong>Weather BOT</strong> provides the same functionality you can find on this site - 
+        it gives you a weather forecast. The bot is using 2 APIs: location => longtitued/latitued => 
+        weather forecast. The site is using 3 APIs: IP => location => longtitued/latitued => weather forecast.</p>
+        <br><p><strong>Golden BOT</strong> accures and keeps track of bonuses received from the purchase and infroms 
+	about new purchases.</p>
+	<br><p><strong>Dota BOT</strong> will automatically send you statistics of the recent Dota match. It tries to 
+        fetch data every 15 minutes. If the data is the same, it sends nothing.</p>
+    </div>
+
+    {{>footer}}
+</body>
+
+</html>

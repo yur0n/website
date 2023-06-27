@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>IP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">    
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <p>IP: {{ip}}</p>
+        <p>Country: {{geo.country}}</p>
+        <p>City: {{geo.city}}</p>
+        <p>Coordinates: </p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Latitued: {{lat}}</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Longtitued: {{long}}</p>
+        <p>Accuracy: {{geo.area}} km</p>    
+    </div>
+
+    {{>footer}}
+</body>
+
+</html>
