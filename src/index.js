@@ -1,6 +1,7 @@
 import app from './app.js'
 import https from 'https'
 import fs from 'fs'
+import path from 'path'
 import socket from './socket.js'
 const port = process.env.PORT || 3000
 const portTls = process.env.PORT_TLS || 443
