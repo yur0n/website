@@ -17,11 +17,11 @@ const credentials = {
 };
 const httpsServer = https.createServer(credentials, app);
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log('Server is up on port: ' + port)
 })
 
-httpsServer.listen(portTls, () => {
+const server = httpsServer.listen(portTls, () => {
 	console.log('HTTPS Server running on port 443');
 });
 
