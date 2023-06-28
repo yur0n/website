@@ -17,7 +17,7 @@ import './bots/golden.js'
 
 const app = express()
 
-const __dirname = path.dirname(import.meta.url).replace(/^file:\/\/\//, '')
+const __dirname = path.resolve()
 const publicDir = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
