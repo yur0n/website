@@ -11,9 +11,9 @@ import checkIP from './controllers/checkIP.js';
 // import './bots/dota.js'
 // import './bots/vk.js'
 
-// import './bots/weather.js'
-// import './controllers/vkUpdate.js'
-// import './bots/golden.js'     
+import './bots/weather.js'
+import './controllers/vkUpdate.js'
+import './bots/golden.js'     
 
 const app = express()
 

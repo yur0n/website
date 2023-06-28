@@ -19,7 +19,7 @@ bot.on('message',  mes => {
     console.log(mes.chat.id, mes.text)
 })
 
-// bot.startPolling(); 
+bot.startPolling(); 
 
 export default async (req, res) => {
     const data = req.body;
