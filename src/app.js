@@ -5,14 +5,12 @@ import hbs from 'hbs'
 import apiRoute from './routes/apiRoute.js'
 import visit from './controllers/visitors.js'
 import player from './controllers/player.js'
-import checkIP from './controllers/checkIP.js';
+import checkIP from './controllers/checkIP.js'
 // BOTS
 // import './bots/vk2tg.js'                              
 // import './bots/dota.js'
-// import './bots/vk.js'
-
 import './bots/weather.js'
-import './controllers/vkUpdate.js'
+import './bots/vk.js'
 import './bots/golden.js'     
 
 const app = express()
@@ -106,4 +104,4 @@ app.get('*', (req, res) => {
     })
 })
 
-export default app;
+export default app
