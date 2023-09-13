@@ -1,11 +1,11 @@
-import app from './app.js'
-import https from 'https'
-import fs from 'fs'
-import path from 'path'
-import socket from './socket.js'
-const port = process.env.PORT || 3000
-const portTls = process.env.PORT_TLS || 443
-const __dirname = path.resolve('src')
+import app from './app.js';
+import https from 'https';
+import fs from 'fs';
+import path from 'path';
+import socket from './socket.js';
+const port = process.env.PORT || 3000;
+const portTls = process.env.PORT_TLS || 443;
+const __dirname = path.resolve();
 // Certificate
 const privateKey = fs.readFileSync(path.join(__dirname,'../certs/private.key.pem'), 'utf8');
 const certificate = fs.readFileSync(path.join(__dirname, '../certs/domain.cert.pem'), 'utf8');
@@ -18,7 +18,7 @@ const credentials = {
 const httpsServer = https.createServer(credentials, app);
 
 app.listen(port, () => {
-    console.log('Server is up on port: ' + port)
+    console.log('Server is up on port: ' + port);
 })
 
 const server = httpsServer.listen(portTls, () => {
