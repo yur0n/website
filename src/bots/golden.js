@@ -29,7 +29,7 @@ bot.on('message',  async (mes) => {
     }
 })
 
-// bot.startPolling(); 
+bot.startPolling(); 
 
 export default async (data) => {
     let user = await Golduser.findOne({name: data.goldUserName})
