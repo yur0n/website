@@ -9,7 +9,7 @@ export const websiteDb = mongoose.createConnection(`mongodb+srv://${login}:${pas
     //useFindAndModify: false
 })
 
-export const telegramDb = mongoose.createConnection(`mongodb+srv://${login}:${pass}@cluster0.0na8y.mongodb.net/Telegram?retryWrites=true&w=majority`, {
+export const telegramDb = mongoose.createConnection(`mongodb+srv://${login}:${pass}@cluster0.0na8y.mongodb.net/telegram?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     //useCreateIndex: true,
