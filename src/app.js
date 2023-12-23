@@ -15,10 +15,9 @@ import './bots/golden.js'
 
 const app = express()
 
-const __dirname = path.resolve()
-const publicDir = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '../templates/views')
-const partialsPath = path.join(__dirname, '../templates/partials')
+const publicDir = path.join(import.meta.dirname, '../public')
+const viewsPath = path.join(import.meta.dirname, '../templates/views')
+const partialsPath = path.join(import.meta.dirname, '../templates/partials')
 
 app.set('trust proxy', true) // Proxy trust for req.ip
 app.set('view engine', 'hbs')
