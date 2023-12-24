@@ -87,6 +87,14 @@ app.get('/game', (req, res) => {
     })
 })
 
+app.get('/privacy-policy', (req, res) => {
+    res.send(viewsPath + '/privacy_policy')
+})
+
+app.get('/terms-conditions', (req, res) => {
+    res.send(viewsPath + '/terms_conditions')
+})
+
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title: "404",
