@@ -88,11 +88,17 @@ app.get('/game', (req, res) => {
 })
 
 app.get('/privacy-policy', (req, res) => {
-    res.send(viewsPath + '/privacy_policy')
+    res.render('privacy_policy', {
+        title: 'Privacy Policy',
+        name: 'Me',
+    })
 })
 
 app.get('/terms-conditions', (req, res) => {
-    res.send(viewsPath + '/terms_conditions')
+    res.render('terms_conditions', {
+        title: 'Terms & Conditions',
+        name: 'Me',
+    })
 })
 
 app.get('/help/*', (req, res) => {
