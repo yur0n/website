@@ -1,4 +1,5 @@
 import {google} from 'googleapis';
+import googleToken from '../models/googleTokens.js';
 
 const YOUR_CLIENT_ID = '117644416177-tlacpuvguv1vrlhrprmtaa8476ufdlgj.apps.googleusercontent.com'
 const YOUR_CLIENT_SECRET = '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'
@@ -29,6 +30,7 @@ const url = oauth2Client.generateAuthUrl({
 console.log(url)
 
 oauth2Client.on('tokens', (tokens) => {
+	console.log('triggered token event')
 	if (tokens.refresh_token) {
 	  // store the refresh_token in my database!
 	  console.log(tokens.refresh_token);
@@ -38,11 +40,12 @@ oauth2Client.on('tokens', (tokens) => {
 
 const googleAuth = async function (req, res) {
     const code = req.query.code
-	console.log(code)
 	const {tokens} = await oauth2Client.getToken(code)
 	//save tokens to db pls, maybe saved on tokens event(check it)
 	oauth2Client.setCredentials(tokens)
-	console.log(tokens)
+	new googleToken (tokens).save().catch((error) => {
+		console.log('Error', error)
+	})
 	res.send('done')
 }
 export { googleAuth, url };
