@@ -1,4 +1,4 @@
-import {google} from ('googleapis');
+import {google} from 'googleapis';
 
 const YOUR_CLIENT_ID = '117644416177-tlacpuvguv1vrlhrprmtaa8476ufdlgj.apps.googleusercontent.com'
 const YOUR_CLIENT_SECRET = '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'
@@ -36,10 +36,13 @@ oauth2Client.on('tokens', (tokens) => {
 	console.log(tokens.access_token);
 });
 
-export default async (req, res) => {
+const googleAuth = async function (req, res) {
     const code = req.params.code
-
+	console.log(code)
 	const {tokens} = await oauth2Client.getToken(code)
 	//save tokens to db pls, maybe saved on tokens event(check it)
 	oauth2Client.setCredentials(tokens)
+	console.log(tokens)
+	res.send('done')
 }
+export { googleAuth, url };

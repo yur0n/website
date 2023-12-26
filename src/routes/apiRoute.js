@@ -1,5 +1,5 @@
 import express from 'express';
-import googleAuth from '../controllers/googleAuth.js';
+import { googleAuth } from '../controllers/googleAuth.js';
 import telegramAuthAPI from '../controllers/telegramAuthAPI.js';
 import checkWeatherAPI from '../controllers/checkWeatherAPI.js';
 import goldShopAPI from '../controllers/goldShopAPI.js';
