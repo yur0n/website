@@ -37,7 +37,7 @@ oauth2Client.on('tokens', (tokens) => {
 });
 
 const googleAuth = async function (req, res) {
-    const code = req.params.code
+    const code = req.query.code
 	console.log(code)
 	const {tokens} = await oauth2Client.getToken(code)
 	//save tokens to db pls, maybe saved on tokens event(check it)
