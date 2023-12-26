@@ -20,14 +20,13 @@ const scopes = [
   'https://www.googleapis.com/auth/youtube'
 ];
 
-const url = oauth2Client.generateAuthUrl({
+const authURL = oauth2Client.generateAuthUrl({
   // 'online' (default) or 'offline' (gets refresh_token)
 	access_type: 'offline',
 
   // If you only need one scope you can pass it as a string
 	scope: scopes
 });
-console.log(url)
 
 oauth2Client.on('tokens', (tokens) => {
 	console.log('triggered token event')
@@ -48,4 +47,4 @@ const googleAuth = async function (req, res) {
 	})
 	res.send('done')
 }
-export { googleAuth, url };
+export { googleAuth, authURL };
