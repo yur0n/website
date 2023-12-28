@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const dataBase = new Schema ({
+const dataBase = new mongoose.Schema ({
     date: {
         type: String
     },

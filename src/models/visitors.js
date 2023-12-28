@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const schema = new Schema({
+const schema = new mongoose.Schema({
     ip: 'string',
     visits: 'number',
     firstVisit: 'string',
