@@ -1,5 +1,4 @@
-import { Schema } from 'mongoose'
-import { websiteDb } from '../database/connection.js'
+import mongoose from 'mongoose'
 
 const dataBase = new Schema ({
     date: {
@@ -13,4 +12,4 @@ const dataBase = new Schema ({
     }
 })
 
-export default websiteDb.model('vkmessage', dataBase)
+export default mongoose.model('vkmessage', dataBase)

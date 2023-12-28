@@ -1,10 +1,9 @@
-import { Schema } from 'mongoose'
-import { websiteDb } from '../database/connection.js'
+import mongoose from 'mongoose'
 
-const schema = new Schema({
+const schema = new mongoose.Schema({
     name: 'string',
     bonus: 'number',
     chat: 'number'
 })
 
-export default websiteDb.model('Golduser', schema)
+export default mongoose.model('Golduser', schema)

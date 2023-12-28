@@ -1,5 +1,4 @@
-import { Schema } from 'mongoose'
-import { websiteDb } from '../database/connection.js'
+import mongoose from 'mongoose'
 
 const schema = new Schema({
     ip: 'string',
@@ -8,4 +7,4 @@ const schema = new Schema({
     lastVisit: 'string'
 })
 
-export default websiteDb.model('Visitor', schema)
+export default mongoose.model('Visitor', schema)

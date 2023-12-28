@@ -1,9 +1,8 @@
-import { Schema } from 'mongoose'
-import { telegramDb } from '../database/connection.js'
+import mongoose from 'mongoose'
 
 const schema = new Schema({
     key: 'string',
     data: {},
 })
 
-export default telegramDb.model('Session', schema)
+export default mongoose.model('Session', schema)
