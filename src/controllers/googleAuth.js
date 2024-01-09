@@ -1,4 +1,5 @@
 import {google} from 'googleapis';
+import User from '../models/users.js';
 
 const YOUR_CLIENT_ID = '117644416177-tlacpuvguv1vrlhrprmtaa8476ufdlgj.apps.googleusercontent.com'
 const YOUR_CLIENT_SECRET = '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'
@@ -27,21 +28,46 @@ const authURL = oauth2Client.generateAuthUrl({
 	scope: scopes
 });
 
-oauth2Client.on('tokens', (tokens) => {
-	console.log('triggered token event')
-	if (tokens.refresh_token) {
-	  // store the refresh_token in my database!
-	  console.log(tokens.refresh_token);
+oauth2Client.on('tokens', async (tokens) => {
+	console.log('oauth2Client.on EVENT')
+	try {
+		if (tokens.refresh_token) {
+			const user = User.findOne({ value: {
+				auth: {
+				  	googleAuth: {
+					  	refresh_token: tokens.refresh_token
+				  	}
+			  	}
+			}})
+			if (!user) {
+				return console.log('Google user not found for refresh token')
+			}
+			user.data.auths.googleAuth = tokens
+			user.markModified('data')
+			await user.save()
+		}
 	}
-	console.log(tokens.access_token);
+	catch (e) {
+		console.log('Problem with database updating googleAuth tokens\n', e)
+	}
 });
 
 const googleAuth = async function (req, res) {
+	const key = req.query.state
     const code = req.query.code
 	const {tokens} = await oauth2Client.getToken(code)
-	//save tokens to db pls, maybe saved on tokens event(check it)
-	oauth2Client.setCredentials(tokens)
+	try {
+		const user = await User.findOne({ key })
+		if (!user) return res.send('Auth tokens not saved')
+		user.data.auths.googleAuth = tokens
+		user.markModified('data')
+		await user.save()
+	}
+	catch (e) {
+		console.log('Problem with database using googleAuth\n', e)
+		return res.send('Auth tokens not recived')
+	}
 
 	res.send('done')
 }
-export { googleAuth, authURL };
+export { googleAuth, authURL, oauth2Client };
