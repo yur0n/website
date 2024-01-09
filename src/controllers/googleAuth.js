@@ -17,7 +17,9 @@ google.options({
 
 // generate a url that asks permissions for Blogger and Google Calendar scopes
 const scopes = [
-  'https://www.googleapis.com/auth/youtube'
+  'https://www.googleapis.com/auth/youtube.readonly',
+  'https://www.googleapis.com/auth/userinfo.profile',
+  'https://www.googleapis.com/auth/userinfo.email',
 ];
 
 const authURL = oauth2Client.generateAuthUrl({
