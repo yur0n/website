@@ -1,8 +1,7 @@
 import bot from '../bots/vk.js'
 import DataVK from '../models/messages.js';
 
-// const yur0n = 378931386
-const rudi = 267424833   //   chat id of rudi and this bot
+const rudi = 267424833   // chat id
 const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of parameters for bot.sendMessage command
     return {                                    // url1 = link to от кого, url2 = link to подробнее
         parse_mode: 'Markdown',                 

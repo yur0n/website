@@ -2,7 +2,7 @@ import botgram from 'botgram'
 import geocode from'../utils/geocode.js'
 import forecast from'../utils/forecast.js'
 
-const bot = botgram("1833660201:AAGFGU0dU9jXWEvvCHTLJ-uCBVfoghllVjY")
+const bot = botgram(process.env.BOT_WEATHER)
 
 bot.command("start", async function (msg, reply, next) {
   await reply.text(`Hello ${msg.from.name}, I'm Weather bot - get your city's frecast!`)

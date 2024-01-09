@@ -1,6 +1,6 @@
 import Slimbot from 'slimbot'
 import Golduser from '../models/gold.js'
-const bot = new Slimbot('2088277694:AAHFk3NAo8xDqpBc7UPWtovUmsRgYvQaJnM')
+const bot = new Slimbot(process.env.BOT_GOLD)
 
 const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of parameters for bot.sendMessage command
     return {                                    // url1 = link to от кого, url2 = link to подробнее

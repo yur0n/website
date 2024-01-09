@@ -1,6 +1,6 @@
 import Slimbot from 'slimbot'
 
-const bot = new Slimbot('1928057359:AAEe94RZJ7oheBjlyE-gThde79JhU72mSJU')   //   main for VK rudi
+const bot = new Slimbot(process.env.BOT_VK_RUDI)   //   main for VK rudi
 
 // const yur0n = 378931386
 // const rudi = 267424833   //   chat id of rudi and this bot

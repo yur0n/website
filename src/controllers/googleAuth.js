@@ -1,14 +1,10 @@
 import {google} from 'googleapis';
 import User from '../models/users.js';
 
-const YOUR_CLIENT_ID = '117644416177-tlacpuvguv1vrlhrprmtaa8476ufdlgj.apps.googleusercontent.com'
-const YOUR_CLIENT_SECRET = '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'
-const YOUR_REDIRECT_URL = 'https://yuron.xyz/api/googleauth'
-
 const oauth2Client = new google.auth.OAuth2(
-	YOUR_CLIENT_ID,
-	YOUR_CLIENT_SECRET,
-	YOUR_REDIRECT_URL
+	process.env.GOOGLE_CLIENT_ID,
+	process.env.GOOGLE_CLIENT_SECRET,
+	process.env.GOOGLE_REDIRECT_URL
 );
 
 google.options({

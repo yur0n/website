@@ -7,8 +7,7 @@ import apiRoute from './routes/apiRoute.js'
 import visit from './controllers/visitors.js'
 import player from './controllers/player.js'
 import checkIP from './controllers/checkIP.js'
-// BOTS
-// import './bots/vk2tg.js'                              
+// BOTS                             
 // import './bots/dota.js'
 import './bots/weather.js'
 import './bots/vk.js'

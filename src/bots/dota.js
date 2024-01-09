@@ -1,6 +1,6 @@
 import botgram from "botgram"
 import request from 'request'
-const bot = botgram("1883716013:AAF6aaTD5CntA2t7IeL3VGfdBmpqQuSCYV8")
+const bot = botgram(process.env.BOT_DOTA)
 
 var key = [
     [ { text: "Рудя \u{1F92C}"}, {text: "Грызля \u{1F921}"} ],
