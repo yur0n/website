@@ -42,7 +42,7 @@ oauth2Client.on('tokens', async (tokens) => {
 				return console.log('Google user not found for refresh token')
 			}
 			user.value.auths.googleAuth = tokens
-			user.markModified('data')
+			user.markModified('value')
 			await user.save()
 		}
 	}
@@ -54,14 +54,14 @@ oauth2Client.on('tokens', async (tokens) => {
 const googleAuth = async function (req, res) {
 	const key = req.query.state
     const code = req.query.code
-	const {tokens} = await oauth2Client.getToken(code)
 	try {
+		const {tokens} = await oauth2Client.getToken(code)
 		const user = await User.findOne({ key })
 		if (!user) return res.send('Auth tokens not saved')
 		console.log(user)
 		user.value.auths.googleAuth = tokens
 		console.log(user)
-		user.markModified('data')
+		user.markModified('value')
 		await user.save()
 	}
 	catch (e) {
