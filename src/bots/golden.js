@@ -13,17 +13,12 @@ const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of 
 }
 
 bot.on('message',  async (mes) => {
-    console.log(mes.chat.id, mes.text)
     let user = await Golduser.findOne({name: mes.text})
     if (!user) {
         bot.sendMessage(mes.chat.id, `${mes.text} не совершил ни одной покупки. Введите ваше имя повторно`)
     } else {
         user.chat = mes.chat.id
-        await user.save().then(() => {
-        console.log(`New GoldUser saved`)
-        }).catch((error) => {
-        console.log('Error', error)
-        })
+        await user.save().catch((error) => console.log('Error', error))
         bot.sendMessage(mes.chat.id, `Здравствуйте, ${user.name}. У вас ${user.bonus} бонус! Вы можете использовать их в нашем магазине.`, 
         inlineKeyboard(`https://yuron.xyz/gold`, `https://yuron.xyz/gold?name=${user.name}`))
     }

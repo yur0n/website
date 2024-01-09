@@ -16,7 +16,6 @@ const bot = new Slimbot(process.env.BOT_VK_RUDI)   //   main for VK rudi
 
 bot.on('message',  mes => {
     bot.sendMessage(mes.chat.id, 'Я буду автоматически присылать новую информацию о твоей группе.')
-    console.log(mes.chat.id, mes.text)
 })
 
 bot.startPolling()

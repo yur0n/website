@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 export default (lat, long) => {
-    return fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + long + '&appid=103d93c647edd7f039de760db67b57f7&units=metric')
+    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${process.env.WEATHER_APPID}&units=metric`)
            .then(res => res.json())
            .then(res => {
             if (res.cod) return 'Unable to find location'

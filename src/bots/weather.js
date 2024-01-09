@@ -5,9 +5,8 @@ import forecast from'../utils/forecast.js'
 const bot = botgram(process.env.BOT_WEATHER)
 
 bot.command("start", async function (msg, reply, next) {
-  await reply.text(`Hello ${msg.from.name}, I'm Weather bot - get your city's frecast!`)
+  await reply.text(`Hello ${msg.from.name}, I'm Weather bot - get your city's forecast!`)
   reply.text('Write down any city you want to check forecast for.')
-  console.log("Received a /start command from", msg.from.username || msg.from.name);
 });
 
 bot.text(async function (msg, reply, next) {

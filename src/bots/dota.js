@@ -30,7 +30,6 @@ bot.command("start", (msg, reply, next) => {
 
 bot.text( async (msg, reply, next) => {
     if (msg.from.id == -1001160655674) {
-        console.log(msg.from.username, msg.from.name, msg.from.id, `Message: ${msg.text}`)
         return
     }
     var player = msg.text

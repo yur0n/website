@@ -13,15 +13,11 @@ export default async (req, res, next) => {
                 firstVisit: new Date,
                 lastVisit: new Date
             })
-            newVisit.save()
-            .then(() => console.log(`New visitor ${ip} saved`))
-            .catch((e) => console.log('Error', e))
+            newVisit.save().catch((e) => console.log('Error', e))
         } else {
             currentIp.visits += 1
             currentIp.lastVisit = new Date
-            currentIp.save()
-            .then(() => console.log(`Visitor ${ip} updated`))
-            .catch((e) => console.log(e))
+            currentIp.save().catch((e) => console.log(e))
         }
     } catch(e) {
         console.log(e)

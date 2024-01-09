@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 export default (address) => {
-   return fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + address + '&limit=1&appid=103d93c647edd7f039de760db67b57f7')
+   return fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${address}&limit=1&appid=${process.env.WEATHER_APPID}`)
    .then(res => res.json())
    .then(res => { 
       if (!res.length) return 'Unable to find location'
