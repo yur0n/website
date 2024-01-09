@@ -1,5 +1,8 @@
 import mongoose from "mongoose"
-console.log(mongoose.connection.db)
-export default mongoose.connection.db.collection(
-	"users",
-);
+
+const schema = new mongoose.Schema({
+    key: 'string',
+    data: {},
+})
+
+export default mongoose.model('User', schema)
