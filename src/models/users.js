@@ -1,8 +1,12 @@
 import mongoose from "mongoose"
 
-const schema = new mongoose.Schema({
-    key: 'string',
-    data: {},
-})
+export default mongoose.connection.db.collection(
+	"users",
+);
 
-export default mongoose.model('User', schema)
+// const schema = new mongoose.Schema({
+//     key: 'string',
+//     data: {},
+// })
+
+// export default mongoose.model('User', schema)

@@ -33,7 +33,7 @@ oauth2Client.on('tokens', async (tokens) => {
 	try {
 		if (tokens.refresh_token) {
 			const user = User.findOne({ value: {
-				auth: {
+				auths: {
 				  	googleAuth: {
 					  	refresh_token: tokens.refresh_token
 				  	}
@@ -42,7 +42,7 @@ oauth2Client.on('tokens', async (tokens) => {
 			if (!user) {
 				return console.log('Google user not found for refresh token')
 			}
-			user.data.auths.googleAuth = tokens
+			user.value.auths.googleAuth = tokens
 			user.markModified('data')
 			await user.save()
 		}
@@ -59,7 +59,7 @@ const googleAuth = async function (req, res) {
 	try {
 		const user = await User.findOne({ key })
 		if (!user) return res.send('Auth tokens not saved')
-		user.data.auths.googleAuth = tokens
+		user.value.auths.googleAuth = tokens
 		user.markModified('data')
 		await user.save()
 	}
