@@ -29,10 +29,8 @@ const authURL = oauth2Client.generateAuthUrl({
 });
 
 oauth2Client.on('tokens', async (tokens) => {
-	console.log('oauth2Client.on EVENT')
 	try {
 		if (tokens.refresh_token) {
-			console.log('oauth2Client.on REFRESH TOKEN FOUND')
 			const user = User.findOne({ value: {
 				auths: {
 				  	googleAuth: {
@@ -62,6 +60,7 @@ const googleAuth = async function (req, res) {
 		if (!user) return res.send('Auth tokens not saved')
 		console.log(user)
 		user.value.auths.googleAuth = tokens
+		console.log(user)
 		user.markModified('data')
 		await user.save()
 	}
