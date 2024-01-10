@@ -80,13 +80,6 @@ app.get('/calc', (req, res) => {
     })
 })
 
-app.get('/game', (req, res) => {
-    res.render('game', {
-        title: 'Game',
-        name: 'Me',
-    })
-})
-
 app.get('/privacy-policy', (req, res) => {
     res.render('privacy_policy', {
         title: 'Privacy Policy',
