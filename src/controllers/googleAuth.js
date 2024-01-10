@@ -24,7 +24,6 @@ const authURL = oauth2Client.generateAuthUrl({
 });
 
 oauth2Client.on('tokens', async (tokens) => {
-	console.log(tokens)
 	try {
 		if (tokens.refresh_token) {
 			const user = await User.findOne({ value: {
@@ -34,17 +33,14 @@ oauth2Client.on('tokens', async (tokens) => {
 				  	}
 			  	}
 			}})
-			console.log(user)
-			if (!user) {
-				return console.log('Google user not found for refresh token')
-			}
+			if (!user) return 
 			user.value.auths.googleAuth = tokens
 			user.markModified('value')
 			await user.save()
 		}
 	}
 	catch (e) {
-		console.log('Problem with database updating googleAuth tokens\n', e)
+		console.log('Problem with database updating googleAuth tokens\n\n', e)
 	}
 });
 
