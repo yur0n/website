@@ -24,6 +24,7 @@ const authURL = oauth2Client.generateAuthUrl({
 });
 
 oauth2Client.on('tokens', async (tokens) => {
+	console.log(tokens)
 	try {
 		if (tokens.refresh_token) {
 			const user = User.findOne({ value: {
@@ -33,6 +34,7 @@ oauth2Client.on('tokens', async (tokens) => {
 				  	}
 			  	}
 			}})
+			console.log(user)
 			if (!user) {
 				return console.log('Google user not found for refresh token')
 			}
