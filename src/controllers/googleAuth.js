@@ -13,8 +13,8 @@ google.options({
 
 const scopes = [
   'https://www.googleapis.com/auth/youtube.readonly',
-  'https://www.googleapis.com/auth/userinfo.profile',
-  'https://www.googleapis.com/auth/userinfo.email'
+//   'https://www.googleapis.com/auth/userinfo.profile',
+//   'https://www.googleapis.com/auth/userinfo.email'
 ];
 
 const authURL = oauth2Client.generateAuthUrl({
@@ -56,7 +56,7 @@ const googleAuth = async function (req, res) {
 		await user.save()
 	}
 	catch (e) {
-		console.log('Problem with database using googleAuth\n', e)
+		console.log('Problem with database using googleAuth\n\n', e)
 		return res.send('Auth tokens not recived')
 	}
 
