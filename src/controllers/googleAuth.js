@@ -34,7 +34,10 @@ oauth2Client.on('tokens', async (tokens) => {
 			  	}
 			}})
 			if (!user) return 
-			user.value.auths.googleAuth = tokens
+			user.value.auths.googleAuth = {
+				access_token: tokens.access_token,
+				refresh_token: tokens.refresh_token
+			}
 			user.markModified('value')
 			await user.save()
 		}
@@ -52,7 +55,8 @@ const googleAuth = async function (req, res) {
 		const {tokens} = await oauth2Client.getToken(code)
 		const user = await User.findOne({ key })
 		if (!user) return res.send('Auth tokens not saved')
-		user.value.auths.googleAuth = tokens
+		user.value.auths.googleAuth.access_token = tokens.access_token
+		if (tokens.refresh_token) user.value.auths.googleAuth.refresh_token = tokens.refresh_token
 		user.markModified('value')
 		await user.save()
 	}
