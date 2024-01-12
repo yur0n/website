@@ -1,7 +1,7 @@
 import vkWork from './workers/vkWork.js'
 import youtubeWork from './workers/youtubeWork.js'
-import { oauth2Client } from ',./controllers/googleAuth.js'
-import User from ',./models/users.js'
+import { oauth2Client } from '../controllers/googleAuth.js'
+import User from '../models/users.js'
 
 async function worker() {
 	try {
