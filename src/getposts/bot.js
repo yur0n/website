@@ -3,7 +3,7 @@ import { Bot, session } from 'grammy'
 import { conversations, createConversation } from "@grammyjs/conversations";
 import { MongoDBAdapter } from "@grammyjs/storage-mongodb"
 
-import collection from './models/users.js'
+import collection from '../models/users.js'
 import { addBot, addTarget, addSource, confirm } from './bot/conversations.js'
 import menuKey from './bot/menus.js'
 import { deleteMsgTime, deleteMsg } from './bot/functions.js';
