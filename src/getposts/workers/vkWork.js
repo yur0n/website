@@ -38,7 +38,7 @@ export default async (domain, chat_id, bot, access_token, options) => {
 				if (links === 2) return
 			}
 
-			if (checkClub) caption = caption.replace(/\[[a-z]+[0-9]+\|.*\]/g, '')            // Check in text [club2131|<<people.com>>]
+			if (caption.match(/\[[a-z]+[0-9]+\|.*\]/g)) caption = caption.replace(/\[[a-z]+[0-9]+\|.*\]/g, '')            // Check in text [club2131|<<people.com>>]
 			let photos = []
 			let photoWidth = 0
 			let photo = ''
