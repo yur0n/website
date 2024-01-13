@@ -8,12 +8,8 @@ import visit from './controllers/visitors.js'
 import player from './controllers/player.js'
 import checkIP from './controllers/checkIP.js'
 // BOTS                             
-// import './bots/dota.js'
 import './getposts/bot.js'
 import './getposts/worker.js'
-
-import './bots/weather.js'
-import './bots/vk.js'
 import './bots/golden.js'
 
 const app = express()

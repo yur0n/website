@@ -1,9 +1,9 @@
-import Slimbot from 'slimbot'
+import { Bot } from 'grammy'
 import Golduser from '../models/gold.js'
-const bot = new Slimbot(process.env.BOT_GOLD)
+const bot = new Bot(process.env.BOT_GOLD)
 
-const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of parameters for bot.sendMessage command
-    return {                                    // url1 = link to от кого, url2 = link to подробнее
+const inlineKeyboard = (url1, url2) => {
+    return {
         parse_mode: 'Markdown',                 
         reply_markup: JSON.stringify({
             inline_keyboard: [[{ text: "Наш магазин", url: url1 },
@@ -12,23 +12,23 @@ const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of 
     }
 }
 
-bot.on('message',  async (mes) => {
-    let user = await Golduser.findOne({name: mes.text})
+bot.on('message',  async ctx => {
+    let user = await Golduser.findOne({name: ctx.msg.text})
     if (!user) {
-        bot.sendMessage(mes.chat.id, `${mes.text} не совершил ни одной покупки. Введите ваше имя повторно`)
+        ctx.reply(`${ctx.msg.text} не совершил ни одной покупки. Введите ваше имя повторно`)
     } else {
-        user.chat = mes.chat.id
+        user.chat = ctx.from.id
         await user.save().catch((error) => console.log('Error', error))
-        bot.sendMessage(mes.chat.id, `Здравствуйте, ${user.name}. У вас ${user.bonus} бонус! Вы можете использовать их в нашем магазине.`, 
+        ctx.reply(`Здравствуйте, ${user.name}. У вас ${user.bonus} бонус! Вы можете использовать их в нашем магазине.`, 
         inlineKeyboard(`https://yuron.xyz/gold`, `https://yuron.xyz/gold?name=${user.name}`))
     }
 })
 
-bot.startPolling(); 
+bot.start()
 
 export default async (data) => {
     let user = await Golduser.findOne({name: data.goldUserName})
-    if (!user.chat) return console.log('Не контактировал с ботом')
-    bot.sendMessage(user.chat, `Cпасибо, что совершили покупку! Вы получили ${data.goldUserBonus} бонус, теперь у вас ${user.bonus} бонус! Вы можете использовать их в нашем магазине.`, 
+    if (!user.chat) return
+    await bot.api.sendMessage(user.chat, `Cпасибо, что совершили покупку! Вы получили ${data.goldUserBonus} бонус, теперь у вас ${user.bonus} бонус! Вы можете использовать их в нашем магазине.`, 
         inlineKeyboard(`https://yuron.xyz/gold`, `https://yuron.xyz/gold?name=${user.name}`))
 }
