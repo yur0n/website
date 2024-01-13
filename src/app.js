@@ -10,7 +10,6 @@ import checkIP from './controllers/checkIP.js'
 // BOTS                             
 import './getposts/bot.js'
 import './getposts/worker.js'
-import './bots/golden.js'
 
 const app = express()
 
@@ -33,7 +32,11 @@ app.get('', visit, (req, res) => {
 })
 
 app.use('/api', apiRoute)
-app.use('/player', player)
+
+
+// write another router
+app.get('/player', player)
+
 app.get('/ip', checkIP)
 
 app.get('/chat', (req, res) => {
