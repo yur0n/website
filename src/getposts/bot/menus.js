@@ -50,7 +50,6 @@ const botKey = new Menu('bot-menu')
 const sourceKey = new Menu('source-menu')
 	.text('🌐 YouTube',   
 		async ctx => {
-			console.log(ctx.session)
 			if (!ctx.session.auths.googleAuth.access_token) {
 				await replyAndDel(ctx, `ℹ️ You have to authenticate YouTube first`, 4000)
 				return ctx.menu.nav('auths-menu')
@@ -61,7 +60,7 @@ const sourceKey = new Menu('source-menu')
 	)
 	.text('🌐 VK',
 		async ctx => {
-			if (!ctx.session.auths.vk) {
+			if (!ctx.session.auths.vkAuth) {
 				await replyAndDel(ctx, `ℹ️ You have to authenticate VK first`, 4000)
 				return ctx.menu.nav('auths-menu')
 			}
