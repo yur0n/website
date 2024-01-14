@@ -10,7 +10,7 @@ export default async (domain, chat_id, bot, access_token, options) => {
         params: {
             domain,
             access_token,
-            count: 2,
+            count: 3,
             v: 5.131,
         }
     })
@@ -45,7 +45,7 @@ export default async (domain, chat_id, bot, access_token, options) => {
 
 			if (caption.length > 1024) {
 				axios.post(`https://api.telegram.org/bot${bot}/sendMessage`, {chat_id, text: caption})
-				.catch((e) => console.log(e.response.data))
+				.catch(console.log)
 				return
 			}
 			if (item.attachments?.[0]) {
@@ -61,12 +61,12 @@ export default async (domain, chat_id, bot, access_token, options) => {
 					}
 				})
 				axios.post(`https://api.telegram.org/bot${bot}/sendPhoto`, {chat_id, photo, caption})
-				.catch((e) => console.log(e.response.data))
+				.catch(console.log)
 				return
 			}
 
 			axios.post(`https://api.telegram.org/bot${bot}/sendMessage`, {chat_id, text: caption})
-			.catch((e) => console.log(e.response.data))      
+			.catch(console.log)      
         });
     })
     .catch((e) => console.log(e))   
