@@ -23,7 +23,7 @@ export default async (req, res) => {
     const data = req.body;
         try {
             const restricted = [441232274, -124949590]
-            if (restricted.includes(data.object.from_id)) return     
+            if (restricted.includes(data.object?.from_id)) return     
             switch (data.type) {
                 case 'wall_reply_new':
                     await bot.api.sendMessage(rudi, 'Добавление комментария на стене:')
@@ -60,6 +60,9 @@ export default async (req, res) => {
                     await bot.api.sendMessage(rudi, `${data.object.amount} руб. с комментарием: ${data.object.description}`, inlineKeyboard
                         (`https://vk.com/id${data.object.from_id}`, `https://vk.com/market-124949590?w=product-124949590_${data.object.item_id}`))
                     break
+                case 'confirmation':
+                    await bot.api.sendMessage(rudi, 'Получен запрос на подтверждение адреса сервера.')
+                    break
             }
             bot.api.sendMessage(rudi, '➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖')
         } catch(e) {
@@ -71,5 +74,5 @@ export default async (req, res) => {
         date: new Date,
         dataRecieved: data
     }).save().catch((e) => console.log('Error', e))
-    res.send('ok')
+    res.send('b883b016')
 }

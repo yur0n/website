@@ -32,7 +32,10 @@ bot.use(session({
 			vkAuth: '' 
 		},
 		bots: {},
-		current: {}
+		current: {
+			bot: '',
+			a: ''
+		}
     }),
    storage: new MongoDBAdapter({ collection }),
 }));

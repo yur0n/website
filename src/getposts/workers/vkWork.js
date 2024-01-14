@@ -31,7 +31,7 @@ export default async (domain, chat_id, bot, access_token, options) => {
 			lastDomain.post = item.id
 			await lastDomain.save().catch(console.log)
 
-			let caption = item.text || item.copy_history?.[0].attachments[0].photo.text || 'Photo'
+			let caption = item.text || item.copy_history?.[0].attachments[0].photo.text || ''
 
 			if (caption.match(linkRegex))  {
 				if (links === 1) caption = caption.replace(linkRegex, '');
