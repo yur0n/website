@@ -31,7 +31,7 @@ export default async (domain, chat_id, bot, access_token, options) => {
 			lastDomain.post = item.id
 			await lastDomain.save().catch(console.log)
 
-			let caption = item.text || item.copy_history[0]?.attachments[0].photo.text || 'Photo'
+			let caption = item.text || item.copy_history?.[0].attachments[0].photo.text || 'Photo'
 
 			if (caption.match(linkRegex))  {
 				if (links === 1) caption = caption.replace(linkRegex, '');
@@ -48,7 +48,7 @@ export default async (domain, chat_id, bot, access_token, options) => {
 				.catch((e) => console.log(e.response.data))
 				return
 			}
-			if (item.attachments[0]) {
+			if (item.attachments?.[0]) {
 				// if (item.copy_history[0].attachments[0].photo) photos = item.copy_history[0].attachments[0].photo.sizes 
 				if (item.attachments[0].photo) photos = item.attachments[0].photo.sizes || []
 				else if (item.attachments[0].video) photos = item.attachments[0].video.image || []
