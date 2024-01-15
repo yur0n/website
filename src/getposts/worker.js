@@ -56,6 +56,6 @@ async function worker() {
 	}
 }
 
-cron.schedule('* */10 * * *', () => {
+cron.schedule('*/10 * * * *', () => {
 	worker();
 });
