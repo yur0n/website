@@ -27,7 +27,6 @@ async function worker() {
 				const botToken = bots[bot].token
 				const options = bots[bot].options
 				if (options.pause) return
-				console.log(bots[bot].name, options, time)
 				if (options.time === 0) {}
 				else if (options.time === 1 && timeArr.includes(time/60)) {}
 				else if (options.time === 2 && timeArr.includes(time/300)) {}
