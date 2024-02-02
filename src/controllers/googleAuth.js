@@ -31,7 +31,7 @@ const googleAuthURL = function (state) {
 oauth2Client.on('tokens', async (tokens) => {
 	try {
 		if (tokens.refresh_token) {
-			const user = User.findOne({ value: {
+			const user = await User.findOne({ value: {
 				auths: {
 				  	googleAuth: {
 					  	refresh_token: tokens.refresh_token
