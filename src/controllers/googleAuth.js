@@ -50,7 +50,7 @@ oauth2Client.on('tokens', async (tokens) => {
 		}
 	}
 	catch (e) {
-		console.log('Problem with database updating googleAuth tokens\n', e)
+		console.log(`Problem with database updating googleAuth tokens of ${user.key}\n`, e)
 	}
 });
 
@@ -69,7 +69,7 @@ const googleAuth = async function (req, res) {
 		await user.save()
 	}
 	catch (e) {
-		console.log('Problem with database using googleAuth\n', e)
+		console.log(`Problem with database using googleAuth of ${user.key}\n`, e)
 		return res.send('Authentication tokens not recived')
 	}
 	res.send('Authenticated, you can close the page now')
