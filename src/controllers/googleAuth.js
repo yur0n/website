@@ -31,7 +31,7 @@ const googleAuthURL = function (state) {
 oauth2Client.on('tokens', async (tokens) => {
 	try {
 		if (tokens.refresh_token) {
-			var user = User.findOne({ value: {
+			const user = User.findOne({ value: {
 				auths: {
 				  	googleAuth: {
 					  	refresh_token: tokens.refresh_token
@@ -41,6 +41,7 @@ oauth2Client.on('tokens', async (tokens) => {
 			if (!user) {
 				return console.log('Google user not found for refresh token')
 			}
+			console.log(user)
 			user.value.auths.googleAuth = {
 				access_token: tokens.access_token,
 				refresh_token: tokens.refresh_token
@@ -50,7 +51,7 @@ oauth2Client.on('tokens', async (tokens) => {
 		}
 	}
 	catch (e) {
-		console.log(`Problem with database updating googleAuth tokens of ${user.key}\n`, e)
+		console.log(`Problem with database updating googleAuth tokens:\n`, e)
 	}
 });
 
@@ -61,7 +62,7 @@ const googleAuth = async function (req, res) {
 	if (!code || !key) return res.send('Auth tokens not recived')
 	try {
 		const {tokens} = await oauth2Client.getToken(code)
-		var user = await User.findOne({ key })
+		const user = await User.findOne({ key })
 		if (!user) return res.send('Authentication tokens not saved')
 		user.value.auths.googleAuth.access_token = tokens.access_token
 		if (tokens.refresh_token) user.value.auths.googleAuth.refresh_token = tokens.refresh_token
@@ -69,7 +70,7 @@ const googleAuth = async function (req, res) {
 		await user.save()
 	}
 	catch (e) {
-		console.log(`Problem with database using googleAuth of ${user.key}\n`, e)
+		console.log(`Problem with database using googleAuth:\n`, e)
 		return res.send('Authentication tokens not recived')
 	}
 	res.send('Authenticated, you can close the page now')
