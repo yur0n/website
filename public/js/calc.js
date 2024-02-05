@@ -4,9 +4,8 @@ class Calculator {
     pressed = '';
     first = '';
     constructor(calc, screen) {
-        this.calc = calc;
         this.screen = screen;
-        this.calc.addEventListener('click', this.onClick.bind(this), false);
+        calc.addEventListener('click', this.onClick.bind(this), false);
     }
     onClick(e) {
         if (!e.target.id && !e.target.className) return;
