@@ -8,10 +8,10 @@
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
-        .calc {
-            height: 233px;
-            margin: 0;
+        #calc {
+            height: auto;
             padding: 5px;
+			padding-top: 2px;
             position: absolute;
             border: 3px solid #888888; 
         }
@@ -25,34 +25,33 @@
 <body>  
     <div class="main-content">
         {{>header}}
-        <span class="calc">
-            <input id="screen" disabled="disabled" size="15">
-            <button id="clear" class="number" style="width: 50px; margin-left: 2px;">clear</button>
+        <span id="calc">
+            <input class="screen" disabled="disabled" size="15">
+            <button id="clear" style="width: 37px;">C</button>
+			<button id="reset" style="width: 38px;">AC</button>
             <br>
-            <button id="plus" class="action">+</button>
-            <button id="minus" class="action">-</button>
-            <button id="multiply" class="action">*</button>
-            <button id="divide" class="action">/</button>
-            <button id="reset" class="number" style="width: 50px;">reset</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button id="square">x²</button>
+			<button id="divide" style="width: 50px;">/</button>
             <br>
-            <button id="num7" class="number">7</button>
-            <button id="num8" class="number">8</button>
-            <button id="num9" class="number">9</button>
-            <button id="square" class="number">x²</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button id="exp">exp</button>
+			<button id="multiply" style="width: 50px;">*</button>
             <br>
-            <button id="num4" class="number">4</button>
-            <button id="num5" class="number">5</button>
-            <button id="num6" class="number">6</button>
-            <button id="exp" class="action">exp</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button id="sqrt">√</button>
+			<button id="minus" style="width: 50px;">-</button>
             <br>
-            <button id="num1" class="number">1</button>
-            <button id="num2" class="number">2</button>
-            <button id="num3" class="number">3</button>
-            <button id="sqrt" class="number">√</button>
-            <br>
-            <button id="num0" class="number">0</button>
-            <button id="numDot" class="number">.</button>
-            <button id="equals" class="number" style="width: 75px;">=</button>
+            <button class="number">0</button>
+            <button id="numDot">.</button>
+            <button id="equals" style="width: 75px;">=</button>
+			<button id="plus" style="width: 50px;">+</button>
         </span>
     </div>
     {{>footer}}
