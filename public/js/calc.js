@@ -8,8 +8,8 @@ class Calculator {
         calc.addEventListener('click', this.onClick.bind(this), false);
     }
     onClick(e) {
-        if (!e.target.id && !e.target.className) return;
-	    if (e.target.className == 'number') return this.screen.value += e.target.textContent;
+        if (e.target.id == 'calc') return;
+	if (e.target.className == 'number') return this.screen.value += e.target.textContent;
 	    switch (e.target.id) {
 		case 'numDot': return this.screen.value.includes('.') ? false : this.screen.value += '.';
 		case 'square': return this.screen.value = this.screen.value ** 2;
@@ -39,4 +39,4 @@ class Calculator {
     };
 }
 
-const calculator = new Calculator(calc, screen)
+new Calculator(document.querySelector('#calc'), document.querySelector('.screen'))
