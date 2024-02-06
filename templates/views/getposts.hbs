@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Get Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/img/getposts.png">
+    <link rel="stylesheet" href="/css/styles.css"> 
+
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <p id="message-0"></p>
+
+        <form>
+            <input placeholder="Location">
+            <button>Search</button>
+        </form>
+        <p id="message-1"></p>
+        <p id="message-2"></p>
+        <p id="message-3"></p>
+        <p>{{address}}</p>
+    </div>
+
+    {{>footer}}
+    
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
