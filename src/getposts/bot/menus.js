@@ -11,8 +11,8 @@ const authsKey = new Menu('auths-menu')
 		const ytLink = googleAuthURL(ctx.from.id)
 		const vkLink = process.env.VK_AUTH_LINK + ctx.from.id
 		range
-      		.url('|     🆔 YouTube    |', ytLink)
-			.url('|       🆔 VK       |', vkLink)
+      		.url('🆔 Authenticate with Google account', ytLink).row()
+			.url('🆔 VK', vkLink)
 	}).row()
 	.back('⬅️ Go back')
 

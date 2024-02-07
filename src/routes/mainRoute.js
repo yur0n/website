@@ -1,11 +1,12 @@
 import { Router } from 'express';
+import path from 'path'
 const router = Router();
 import apiRoute from './apiRoute.js'
 import visit from '../controllers/visitors.js'
 import player from '../controllers/player.js'
 import checkIP from '../controllers/checkIP.js'
 
-app.get('', visit, (req, res) => {
+router.get('', visit, (req, res) => {
     res.render('index', {
         title: 'Weather',
         name: 'Me',
@@ -19,10 +20,7 @@ router.get('/player', player)
 router.get('/ip', checkIP)
 
 router.get('/getposts', (req, res) => {
-    res.render('getposts', {
-        title: 'Get Posts',
-        name: 'Me',
-    })
+    res.sendFile(path.join(import.meta.dirname, '../../templates/views/getposts.html'))
 })
 
 router.get('/getposts/privacy-policy', (req, res) => {
@@ -90,10 +88,12 @@ router.get('/calc', (req, res) => {
     })
 })
 
-app.get('*', (req, res) => {
+router.get('*', (req, res) => {
     res.render('404', {
         title: "404",
         mes: 'Page not found',
         name: 'Me'
     })
 })
+
+export default router
