@@ -24,13 +24,9 @@ async function worker() {
 			if (googleTokens?.refresh_token) oauth2Client.setCredentials(googleTokens)
 
 			for (const bot in bots) {
-				const botToken = bots[bot].token
 				const options = bots[bot].options
-				if (options.pause) continue
-				if (options.time === 0) {}
-				else if (options.time === 1 && timeArr.includes(time/60)) {}
-				else if (options.time === 2 && timeArr.includes(time/300)) {}
-				else continue 
+				if (!canWork(options)) continue
+				const botToken = bots[bot].token
 				if (googleTokens?.refresh_token) {
 					bots[bot].sources.youtube.forEach( source => {
 						bots[bot].targets.forEach(async target => {
@@ -58,3 +54,12 @@ async function worker() {
 cron.schedule('*/10 * * * *', () => {
 	worker();
 });
+
+function canWork(options) {
+	if (options.pause) return false
+	if (options.time === 0) {}
+	else if (options.time === 1 && timeArr.includes(time/60)) {}
+	else if (options.time === 2 && timeArr.includes(time/300)) {}
+	else return false
+	return true
+}

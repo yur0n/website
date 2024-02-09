@@ -5,14 +5,20 @@ import Lastpost from '../../models/lastposts.js'
 export default async (source, target, bot) => {
 	try {
 		const link = await getVideo(source)
-		if(!link) return
+		if (!link) {
+			console.log(source, target)
+			return
+		}
 		let lastpost = await Lastpost.findOne({ domain: source, chat_id: target, bot })
 		if (!lastpost) {
-			lastpost= new Lastpost({ domain: source, chat_id: target, bot, link })
+			lastpost = new Lastpost({ domain: source, chat_id: target, bot, link })
 			await lastpost.save()
-		} else if (link === lastpost.link) return
-		lastpost.link = link
-		await lastpost.save()
+		}
+		else if (link === lastpost.link) return
+		else {
+			lastpost.link = link
+			await lastpost.save()
+		}
 		await axios.post(`https://api.telegram.org/bot${bot}/sendMessage`, {chat_id: target, text: link})
 	} catch(e) { console.log('Error in youtubeWork:\n\n', e) }
 }
