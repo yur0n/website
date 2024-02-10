@@ -20,7 +20,11 @@ router.get('/player', player)
 router.get('/ip', checkIP)
 
 router.get('/getposts', (req, res) => {
-    console.log(req)
+    const headers = req.headers
+    const botId = req.headers['x-telegram-bot-token'];
+  const userId = req.headers['x-telegram-user-id'];
+  console.log(userId, botId, headers)
+
     res.sendFile(path.join(import.meta.dirname, '../../templates/views/getposts.html'))
 })
 

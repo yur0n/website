@@ -246,7 +246,7 @@ function test() {
 	const name = document.querySelector('#name-form')
 	const email = document.querySelector('#email-form')
 	const msg = document.querySelector('#messagee-form')
-	fetch(`/getposts?name=${name}&email=${email}&message=${msg}`)
+	fetch(`/getposts?name=${name}&email=${email}&message=${msg}`, {method: 'POST'})
 	alert("Message recived. Thank You!");
 }
 // Slideshow
