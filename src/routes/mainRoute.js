@@ -20,7 +20,7 @@ router.get('/player', player)
 router.get('/ip', checkIP)
 
 router.get('/getposts', (req, res) => {
-    console.log(req.query, req.body)
+    console.log(req)
     res.sendFile(path.join(import.meta.dirname, '../../templates/views/getposts.html'))
 })
 
