@@ -20,18 +20,15 @@ router.get('/player', player)
 router.get('/ip', checkIP)
 
 router.get('/getposts', (req, res) => {
-    const headers = req.headers
-    const botId = req.headers['x-telegram-bot-token'];
-  const userId = req.headers['x-telegram-user-id'];
-  console.log(userId, botId, headers)
-
     res.sendFile(path.join(import.meta.dirname, '../../templates/views/getposts.html'))
 })
 
 router.post('/getposts', (req, res) => {
-    const {name, email, message} = req.query
-    if (!name || !email || !message) return res.status(400).send({error: 'Specify all params'})
-    res.send('OK')
+    console.log(req.body)
+    const {name, email, message} = req.body
+    console.log(name, email, message)
+    if (!name || !email || !message) return res.status(400).send('Complete all fields!')
+    res.send('Message recived. Thank you!')
 })
 
 router.get('/getposts/privacy-policy', (req, res) => {

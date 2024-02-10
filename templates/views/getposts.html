@@ -195,7 +195,7 @@
 					Us</span>
 			</div>
 
-			<form class="w3-container" target="_blank">
+			<form class="w3-container" action="/getposts" method="post" target="_self">
 				<div class="w3-section">
 					<label for="name-form">Name</label>
 					<input id="name-form" class="w3-input w3-border w3-hover-border-black"
@@ -216,7 +216,7 @@
 						required></textarea>
 				</div>
 				<button type="submit"
-					class="w3-button w3-block w3-darkest-blue" onclick="test()">Send</button>
+					class="w3-button w3-block w3-darkest-blue">Send</button>
 			</form>
 
 		</div>
@@ -242,13 +242,6 @@
 		</footer>
 
 		<script>
-function test() {
-	const name = document.querySelector('#name-form')
-	const email = document.querySelector('#email-form')
-	const msg = document.querySelector('#messagee-form')
-	fetch(`/getposts?name=${name}&email=${email}&message=${msg}`, {method: 'POST'})
-	alert("Message recived. Thank You!");
-}
 // Slideshow
 var slideIndex = 1;
 showDivs(slideIndex);
