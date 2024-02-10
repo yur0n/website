@@ -216,7 +216,7 @@
 						required></textarea>
 				</div>
 				<button type="submit"
-					class="w3-button w3-block w3-darkest-blue">Send</button>
+					class="w3-button w3-block w3-darkest-blue" onclick="test()">Send</button>
 			</form>
 
 		</div>
@@ -242,6 +242,9 @@
 		</footer>
 
 		<script>
+function test() {
+	alert("Message recived. Thank You!");
+}
 // Slideshow
 var slideIndex = 1;
 showDivs(slideIndex);

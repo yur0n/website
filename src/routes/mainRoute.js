@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router } from 'express'
 import path from 'path'
 const router = Router();
 import apiRoute from './apiRoute.js'
@@ -20,7 +20,14 @@ router.get('/player', player)
 router.get('/ip', checkIP)
 
 router.get('/getposts', (req, res) => {
+    console.log(req.query, req.body)
     res.sendFile(path.join(import.meta.dirname, '../../templates/views/getposts.html'))
+})
+
+router.post('/getposts', (req, res) => {
+    const {name, email, message} = req.query
+    if (!name || !email || !message) return res.status(400).send({error: 'Specify all params'})
+    res.send('OK')
 })
 
 router.get('/getposts/privacy-policy', (req, res) => {
