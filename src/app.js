@@ -20,6 +20,9 @@ app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 app.use(express.static(publicDir))
 app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
 
 app.use(mainRoute)
 
