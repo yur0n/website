@@ -24,9 +24,7 @@ router.get('/getposts', (req, res) => {
 })
 
 router.post('/getposts', (req, res) => {
-    console.log(req.body)
     const {name, email, message} = req.body
-    console.log(name, email, message)
     if (!name || !email || !message) return res.status(400).send('Complete all fields!')
     res.send('Message recived. Thank you!')
 })
