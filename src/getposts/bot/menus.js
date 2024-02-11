@@ -4,7 +4,8 @@ import { Menu } from "@grammyjs/menu"
 
 const menuKey = new Menu('main-menu')
 	.submenu('|      🤖 My Bots      |', 'bots-menu')
-	.submenu('|  🔑 Authentication   |', 'auths-menu')
+	.submenu('|  🔑 Authentication   |', 'auths-menu').row()
+	.webApp('Your account', 'https://yuron.xyz/getposts/account')
 
 const authsKey = new Menu('auths-menu')
 	.dynamic((ctx, range) => {
