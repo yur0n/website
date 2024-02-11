@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Get Posts Account</title>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" sizes="16x16" rel="noopener" target="_blank"
+		href="/img/getposts/favicon16px.png">
+	<link rel="icon" type="image/png" sizes="32x32" rel="noopener" target="_blank"
+		href="/img/getposts/favicon32px.png">
+	<link rel="icon" type="image/png" sizes="128x128" rel="noopener"
+		target="_blank" href="/img/getposts/favicon128px.png">
+	<link rel="stylesheet" href="/css/getposts.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+		.mySlides {display:none}
+		.w3-tag, .fa {cursor:pointer}
+		.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+	</style>
+</head>
+<body>
+<p class="test"></p>
+<script>
+	const p = document.querySelector('#test')
+	const app = window.Telegram.WebApp
+	app.expand()
+	const user = app.initDataUnsafe.user
+	p.value = user.id
+</script>
+</body>
+</html>
