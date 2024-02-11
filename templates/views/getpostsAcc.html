@@ -23,13 +23,14 @@
 	</style>
 </head>
 <body>
+<p>test</p>
 <p class="test"></p>
 <script>
 	const p = document.querySelector('.test')
 	const app = window.Telegram.WebApp
 	app.expand()
 	const user = app.initDataUnsafe.user
-	p.value = user.id
+	p.textContent = user.id
 </script>
 </body>
 </html>
