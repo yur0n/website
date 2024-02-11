@@ -32,7 +32,7 @@
 	const app = window.Telegram.WebApp
 	const user = app.initDataUnsafe.user
 	let id = user?.id
-	console.log(user)
+	console.log(id)
 	if (!user)  {
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams(queryString)
@@ -43,7 +43,8 @@
 	async function getData (id) {
 		try {
 			let res = await fetch(`/api/getpostsData?id=${id}`)
-			return res.json()
+			let data = await res.json()
+			return data
 		} catch (e) {
 			console.log(e)
 			return { error: 'Failed to retrive data' }
