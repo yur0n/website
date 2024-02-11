@@ -44,13 +44,14 @@
 		try {
 			let res = await fetch(`/api/getpostsData?id=${id}`)
 			let data = await res.json()
+			console.log(data)
 			return data
 		} catch (e) {
 			console.log(e)
 			return { error: 'Failed to retrive data' }
 		}
 	}
-	console.log(getData(id))
+	getData(id)
 // 	 = document.createElement('p'); //создаем параграф
 //    profName.innerText = `${tg.initDataUnsafe.user.first_name}
 //    ${tg.initDataUnsafe.user.last_name}
