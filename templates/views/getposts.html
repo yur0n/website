@@ -195,7 +195,7 @@
 					Us</span>
 			</div>
 
-			<form id="askus-form" class="w3-container" action="/getposts" method="post">
+			<form id="askus-form" class="w3-container">
 				<div class="w3-section">
 					<label for="name-form">Name</label>
 					<input id="name-form" class="w3-input w3-border w3-hover-border-black"
@@ -243,14 +243,36 @@
 
 		<script>
 // Slideshow
-const askusForm = document.querySelector('#askus-form')
-askusForm.on('submit',  async e => {
+document.querySelector('#askus-form').addEventListener('submit', async e => {
 	e.preventDefault()
-	console.log(e.elements)
-	const data = e.elements 
-	await fetch('/getposts', {method: 'POST', body: JSON.stringify(data)})
+	const {
+		email: {value: email},
+		name: {value: name}, 
+		message: {value: message}
+	} = e.srcElement.elements
+	const res = await fetch('/getposts', {
+		method: 'POST', 
+		headers: { "Content-Type": "application/json"},
+		body: JSON.stringify({name, email, message})
+	})
+	console.log(await res.text())
 	alert('Thank you!')
 })
+// async function askUsHandle(e) {
+// 	e.preventDefault()
+// 	console.log(e.)
+// 	const {
+// 		email: {value: email},
+// 		name: {value: name}, 
+// 		message: {value: message}
+// 	} = e.srcElement.elements
+// 	await fetch('/getposts', {
+// 		method: 'POST', 
+// 		headers: { "Content-Type": "application/json"} ,
+// 		body: JSON.stringify({name, email, message})
+// 	})
+// 	alert('Thank you!')
+// }
 
 var slideIndex = 1;
 showDivs(slideIndex);
