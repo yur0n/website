@@ -40,7 +40,7 @@
 	}
 	app.expand()
 
-	function getData (id) {
+	async function getData (id) {
 		return fetch(`/api/getpostsData?id=${id}`)
 		.then(res => res.json())
 		.catch(e => {
@@ -48,7 +48,8 @@
 			return { error: 'Failed to retrive data' }
 		})
 	}
-	console.log(await getData(id))
+	let huy = await getData(id)
+	console.log(huy)
 // 	 = document.createElement('p'); //создаем параграф
 //    profName.innerText = `${tg.initDataUnsafe.user.first_name}
 //    ${tg.initDataUnsafe.user.last_name}
