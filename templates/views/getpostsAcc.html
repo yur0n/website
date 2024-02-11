@@ -55,8 +55,12 @@
 		let bots = userData.bots
 		for (const [key, value] of Object.entries(userData.bots)) {
   			console.log(`${key}: ${value}`);
-			let botName, sources = document.createElement('p')
-			let targets, options, youtube, vk = document.createElement('ul')
+			let botName = document.createElement('p'),
+				sources = document.createElement('p')
+			let targets = document.createElement('ul'),
+				options = document.createElement('ul'),
+				youtube = document.createElement('ul'), 
+				vk = document.createElement('ul')
 			botName.innerText = key
 			sources.innerText = 'Sources:'
 			targets.innerText = 'Targets:'
