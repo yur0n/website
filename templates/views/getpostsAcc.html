@@ -41,7 +41,7 @@
 	app.expand()
 
 	async function getData (id) {
-		return fetch(`/api/getpostsData?id=${id}`)
+		return await fetch(`/api/getpostsData?id=${id}`)
 		.then(res => res.json())
 		.catch(e => {
 			console.log(e)
