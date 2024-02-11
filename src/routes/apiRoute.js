@@ -4,10 +4,12 @@ import vkAuth from '../controllers/vkAuth.js';
 import checkWeatherAPI from '../controllers/checkWeatherAPI.js';
 import goldShopAPI from '../controllers/goldShopAPI.js';
 import vkUpdate from '../controllers/vkUpdate.js';
+import getpostsData from '../controllers/getpostsData.js';
 import vkMessages from '../models/messages.js';
 
 const router = Router();
 
+router.get('/getpostsData', getpostsData)
 router.get('/vkAuth', vkAuth);
 router.get('/googleAuth', googleAuth);
 router.get('/weather', checkWeatherAPI);

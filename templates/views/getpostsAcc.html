@@ -23,14 +23,40 @@
 	</style>
 </head>
 <body>
+<div id="main"></div>
 <p>test</p>
 <p class="test"></p>
 <script>
+	const main = document.getElementById('main')
 	const p = document.querySelector('.test')
 	const app = window.Telegram.WebApp
-	app.expand()
 	const user = app.initDataUnsafe.user
-	p.textContent = user.id
+	let id = user?.id
+	console.log(user)
+	if (!user)  {
+		const queryString = window.location.search
+		const urlParams = new URLSearchParams(queryString)
+		id = urlParams.get('id')
+	}
+	app.expand()
+
+	function getData (id) {
+		return fetch(`/api/getpostsData?id=${id}`)
+		.then(res => res.json())
+		.catch(e => {
+			console.log(e)
+			return { error: 'Failed to retrive data' }
+		})
+	}
+	console.log(getData(id))
+// 	 = document.createElement('p'); //создаем параграф
+//    profName.innerText = `${tg.initDataUnsafe.user.first_name}
+//    ${tg.initDataUnsafe.user.last_name}
+//    ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+//    //выдем имя, "фамилию", через тире username и код языка
+//    usercard.appendChild(profName); //добавляем 
+	
+	p.textContent = id
 </script>
 </body>
 </html>
