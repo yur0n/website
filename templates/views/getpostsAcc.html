@@ -16,6 +16,9 @@
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
+		div {
+			text-align: center;
+		}
 		html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 		.mySlides {display:none}
 		.w3-tag, .fa {cursor:pointer}
@@ -23,23 +26,16 @@
 	</style>
 </head>
 <body>
-	<h1>Yout bots:</h1>
+	<h1>Your bots:</h1>
 	<div id="main"></div>
-	<p>test</p>
-	<p class="test"></p>
 <script>
-	const main = document.getElementById('main')
-	const p = document.querySelector('.test')
 	const app = window.Telegram.WebApp
-	const user = app.initDataUnsafe.user
-	let id = user?.id
-	console.log(id)
-	if (!user)  {
-		const queryString = window.location.search
-		const urlParams = new URLSearchParams(queryString)
-		id = urlParams.get('id')
-	}
 	app.expand()
+
+	const main = document.getElementById('main')
+	let id = app.initDataUnsafe.user?.id
+	if (!id) id = new URLSearchParams(window.location.search).get('id')
+	
 	async function getData (id) {
 		try {
 			const res = await fetch(`/api/getpostsData?id=${id}`) //add protection
@@ -52,9 +48,15 @@
 
 	async function setPage (id) {
 		let userData = await getData(id)
+		if (userData.error) return main.innerText = userData.error
 		let bots = userData.bots
+		if (!Object.keys(bots).length) {
+			let noBots = document.createElement('p')
+			noBots.innerText = '<h1>You have no bots</h1>'
+			main.append(noBots)
+			return
+		}
 		for (const [key, value] of Object.entries(userData.bots)) {
-  			console.log(`${key}: ${value}`);
 			let botName = document.createElement('p'),
 				sources = document.createElement('p')
 			let targets = document.createElement('ul'),
@@ -62,7 +64,7 @@
 				youtube = document.createElement('ul'), 
 				vk = document.createElement('ul')
 			botName.innerText = key
-			sources.innerText = 'Sources:'
+			sources.innerText = '<h2>Sources:</h2>'
 			targets.innerText = 'Targets:'
 			options.innerText = 'Options:'
 			youtube.innerText = 'Youtube:'
@@ -85,20 +87,16 @@
 				li.innerText = el
 				targets.append(li)
 			})
-			value.options.forEach(el => {
-				let li = document.createElement('li')
-				li.innerText = el
-				options.append(li)
-			})
-
-			for (const [key, value] of Object.entries(value.sources)) {
-				let botName = document.createElement('p')
-			}
+			// value.options.forEach(el => {
+			// 	let li = document.createElement('li')
+			// 	li.innerText = el
+			// 	options.append(li)
+			// })
 		}
 	}
 	setPage(id)
 // function append_li_from_arr(arr, ul) {
-// 	ul.forEach(li => {
+// 	arr.forEach(li => {
 // 		let liNode = document.createElement('li')
 // 		liNode.innerText = li
 // 		ul.append(liNode)
@@ -110,8 +108,6 @@
 //    ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
 //    //выдем имя, "фамилию", через тире username и код языка
 //    usercard.appendChild(profName); //добавляем 
-	
-	p.textContent = id
 </script>
 </body>
 </html>

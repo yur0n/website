@@ -1,7 +1,7 @@
 import User from '../models/users.js'
 
 export default async (req, res) => {
-	console.log(req.headers)
+	// console.log(req.headers)
 	try {
 		const user = await User.findOne({ key: req.query.id })
 		if (!user) return res.send({ error: 'User not found' })
