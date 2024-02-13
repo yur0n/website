@@ -52,7 +52,7 @@
 		let bots = userData.bots
 		if (!Object.keys(bots).length) {
 			let noBots = document.createElement('p')
-			noBots.innerText = '<h1>You have no bots</h1>'
+			noBots.innerText = 'You have no bots'
 			main.append(noBots)
 			return
 		}
@@ -64,7 +64,7 @@
 				youtube = document.createElement('ul'), 
 				vk = document.createElement('ul')
 			botName.innerText = key
-			sources.innerText = '<h2>Sources:</h2>'
+			sources.innerText = 'Sources:'
 			targets.innerText = 'Targets:'
 			options.innerText = 'Options:'
 			youtube.innerText = 'Youtube:'
