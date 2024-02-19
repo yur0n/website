@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Get Posts</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/png" sizes="16x16" rel="noopener" target="_blank"
+			href="/img/getposts/favicon16px.png">
+		<link rel="icon" type="image/png" sizes="32x32" rel="noopener" target="_blank"
+			href="/img/getposts/favicon32px.png">
+		<link rel="icon" type="image/png" sizes="128x128" rel="noopener"
+			target="_blank" href="/img/getposts/favicon128px.png">
+		<link rel="stylesheet" href="/css/getposts.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+		<link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+			.mySlides {display:none}
+			.w3-tag, .fa {cursor:pointer}
+			.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+		</style>
+	</head>
+	<body>
+
+		<!-- Links (sit on top) -->
+		<div class="w3-top">
+			<div class="w3-row w3-large w3-blue">
+				<!--
+				<div class="w3-col s3">
+					<a href="#" class="w3-button w3-block">Home</a>
+				</div>
+				-->
+				<div class="w3-col s3">
+					<a href="#plans" class="w3-button w3-block">Subscription</a>
+				</div>
+				<div class="w3-col s3">
+					<a href="#contact" class="w3-button w3-block">Ask Us</a>
+				</div>
+				<div class="w3-col s3">
+					<a href="#about" class="w3-button w3-block">Account</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Content -->
+		<div class="w3-content"
+			style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+
+			<div class="w3-panel">
+				<h1><b>GET POSTS</b></h1>
+				<p>Your personal <b>Content Creator</b></p>
+			</div>
+
+			<!-- Slideshow -->
+			<div class="w3-container">
+				<div class="w3-display-container mySlides">
+					<img src="/img/getposts/getpostsimg.jpg" style="width:100%">
+					<div class="w3-display-topleft w3-container w3-padding-32">
+						<span class="w3-white w3-padding-large w3-animate-bottom">Start with a 1
+							Month subscription for <b>FREE</b></span>
+					</div>
+				</div>
+				<div class="w3-display-container mySlides">
+					<img src="/img/getposts/getpostsimg.jpg" style="width:100%">
+					<div class="w3-display-middle w3-container w3-padding-32">
+						<span class="w3-white w3-padding-large w3-animate-bottom">GET POSTS
+							2</span>
+					</div>
+				</div>
+				<div class="w3-display-container mySlides">
+					<img src="/img/getposts/getpostsimg.jpg" style="width:100%">
+					<div class="w3-display-topright w3-container w3-padding-32">
+						<span class="w3-white w3-padding-large w3-animate-bottom">GET POSTS
+							3</span>
+					</div>
+				</div>
+
+				<!-- Slideshow next/previous buttons -->
+				<div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+					<div class="w3-left" onclick="plusDivs(-1)"><i
+							class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+					<div class="w3-right" onclick="plusDivs(1)"><i
+							class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+
+					<div class="w3-center">
+						<span class="w3-tag demodots w3-border w3-transparent w3-hover-white"
+							onclick="currentDiv(1)"></span>
+						<span class="w3-tag demodots w3-border w3-transparent w3-hover-white"
+							onclick="currentDiv(2)"></span>
+						<span class="w3-tag demodots w3-border w3-transparent w3-hover-white"
+							onclick="currentDiv(3)"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Grid -->
+			<div class="w3-row w3-container">
+				<div class="w3-center w3-padding-64">
+					<span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Start
+						Using <b>GET POSTS</b></span>
+				</div>
+				<div class="w3-col l3 m6 w3-blue w3-container w3-padding-16">
+					<h3>Create Telegram Bot</h3>
+					<p>Contact BotFather in Telegram and create a new Bot. Send Bot token to
+						Get Posts - you're ready to go.</p>
+				</div>
+
+				<div class="w3-col l3 m6 w3-dark-blue w3-container w3-padding-16">
+					<h3>Add Sources</h3>
+					<p>Add YouTube channels, Facebook pages, Instagram profiles, Telegram
+						channels
+						and more to your Bot.</p>
+				</div>
+
+				<div class="w3-col l3 m6 w3-darker-blue w3-container w3-padding-16">
+					<h3>Add Targets</h3>
+					<p>Create Telegram channel, group or chat and make your Bot an admin. Add
+						your channel to Get Posts.</p>
+				</div>
+
+				<div class="w3-col l3 m6 w3-darkest-blue w3-container w3-padding-16">
+					<h3>Let Get Posts Work</h3>
+					<p>Sit back and relax! Get Posts will automatically fetch new content from
+						chosen sources to targets.</p>
+				</div>
+			</div>
+
+			<!-- Grid -->
+			<div class="w3-row-padding" id="plans">
+				<div class="w3-center w3-padding-64">
+					<h3>Subscription</h3>
+					<p>Choose a pricing plan that fits your needs.</p>
+				</div>
+
+				<div class="w3-third w3-margin-bottom">
+					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+						<li class="w3-black w3-xlarge w3-padding-32">Free</li>
+						<li class="w3-padding-16"><b>No</b> Options</li>
+						<li class="w3-padding-16"><b>2</b> Bots</li>
+						<li class="w3-padding-16"><b>3</b> Sources</li>
+						<li class="w3-padding-16"><b>2</b> Targets</li>
+						<li class="w3-padding-16">
+							<h2 class="w3-wide">$ 0</h2>
+							<span class="w3-opacity">$ 0 per month</span>
+						</li>
+						<li class="w3-light-grey w3-padding-24">
+							<a href="https://t.me/getyoutubepostbot"><p class="w3-button w3-green w3-padding-large">Try</p></a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="w3-third w3-margin-bottom">
+					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+						<li class="w3-dark-grey w3-xlarge w3-padding-32">1 Month</li>
+						<li class="w3-padding-16"><b>10</b> Options</li>
+						<li class="w3-padding-16"><b>10</b> Bots</li>
+						<li class="w3-padding-16"><b>10</b> Sources</li>
+						<li class="w3-padding-16"><b>10</b> Targets</li>
+						<li class="w3-padding-16"><b>15+</b> Targets</li>
+						<li class="w3-padding-16">
+							<h2 class="w3-wide">$ 10</h2>
+							<span class="w3-opacity">$ 10 per month</span>
+						</li>
+						<li class="w3-light-grey w3-padding-24">
+							<button class="w3-button w3-green w3-padding-large" disabled>Get</button>
+						</li>
+					</ul>
+				</div>
+
+				<div class="w3-third w3-margin-bottom">
+					<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+						<li class="w3-black w3-xlarge w3-padding-32">1 Year</li>
+						<li class="w3-padding-16"><b>15+</b> Options</li>
+						<li class="w3-padding-16"><b>Unlimited</b> Bots</li>
+						<li class="w3-padding-16"><b>15+</b> Sources</li>
+						<li class="w3-padding-16"><b>15+</b> Targets</li>
+						<li class="w3-padding-16"><b>15+</b> Targets</li>
+						<li class="w3-padding-16"><b>15+</b> Targets</li>
+						<li class="w3-padding-16">
+							<h2 class="w3-wide">$ 96</h2>
+							<span class="w3-opacity">$ 8 per month</span>
+						</li>
+						<li class="w3-light-grey w3-padding-24">
+							<button class="w3-button w3-green w3-padding-large" disabled>Get</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Contact -->
+			<div class="w3-center w3-padding-64" id="contact">
+				<span
+					class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Ask
+					Us</span>
+			</div>
+
+			<form id="askus-form" class="w3-container">
+				<div class="w3-section">
+					<label for="name-form">Name</label>
+					<input id="name-form" class="w3-input w3-border w3-hover-border-black"
+						style="width:100%;"
+						type="text" name="name" maxlength="20" minlength="3" required>
+				</div>
+				<div class="w3-section">
+					<label for="email-form">Email</label>
+					<input id="email-form" class="w3-input w3-border w3-hover-border-black"
+						style="width:100%;"
+						type="email" name="email" required>
+				</div>
+				<div class="w3-section">
+					<label for="message-form">Message (500 characters max)</label>
+					<textarea id="message-form"
+						class="w3-input w3-border w3-hover-border-black" style="width:100%;"
+						name="message" rows="4" maxlength="500" minlength="10"
+						required></textarea>
+				</div>
+				<button type="submit"
+					class="w3-button w3-block w3-darkest-blue">Send</button>
+			</form>
+
+		</div>
+
+		<!-- Footer -->
+
+		<footer class="w3-container w3-padding-32 w3-light-grey w3-center">
+			<h4>Do not hesitate, just <b><a href="#plans">Start Now!</a></b></h4>
+			<p><a href="/getposts/privacy-policy">Privacy Policy</a></p>
+			<p><a href="/getposts/terms-conditions">Terms & Conditions</a></p>
+			<a href="#" class="w3-button w3-black w3-margin"><i
+					class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+			<div class="w3-xlarge w3-section">
+				<i class="fa fa-facebook-official w3-hover-opacity"></i>
+				<i class="fa fa-instagram w3-hover-opacity"></i>
+				<i class="fa fa-snapchat w3-hover-opacity"></i>
+				<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+				<i class="fa fa-twitter w3-hover-opacity"></i>
+				<i class="fa fa-linkedin w3-hover-opacity"></i>
+			</div>
+			<p>Created by <a href="/"
+					title="yuron" target="_blank" class="w3-hover-text-green">yuron</a></p>
+		</footer>
+
+		<script>
+// Slideshow
+document.querySelector('#askus-form').addEventListener('submit', async e => {
+	e.preventDefault()
+	const {
+		email: {value: email},
+		name: {value: name}, 
+		message: {value: message}
+	} = e.srcElement.elements
+	const res = await fetch('/getposts', {
+		method: 'POST', 
+		headers: { "Content-Type": "application/json"},
+		body: JSON.stringify({name, email, message})
+	})
+	console.log(await res.text())
+	alert('Thank you!')
+})
+// async function askUsHandle(e) {
+// 	e.preventDefault()
+// 	console.log(e.)
+// 	const {
+// 		email: {value: email},
+// 		name: {value: name}, 
+// 		message: {value: message}
+// 	} = e.srcElement.elements
+// 	await fetch('/getposts', {
+// 		method: 'POST', 
+// 		headers: { "Content-Type": "application/json"} ,
+// 		body: JSON.stringify({name, email, message})
+// 	})
+// 	alert('Thank you!')
+// }
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demodots");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+	x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+	dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
+
+	</body>
+</html>

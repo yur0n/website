@@ -1,12 +1,8 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose'
 
-// export default mongoose.connection.db.collection(
-// 	"users",
-// );
-mongoose.set('strictQuery', true)
-const schema = new mongoose.Schema({
-    key: 'string',
-    value: {},
-})
+const schema = new mongoose.Schema ({
+    key: String,
+	value: Object
+}, { minimize: false })
 
-export default mongoose.model('User', schema)
+export default mongoose.model('user', schema)

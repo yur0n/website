@@ -11,39 +11,42 @@ google.options({
 	auth: oauth2Client
 });
 
+const youtube = google.youtube({ version: 'v3' })
+
 const scopes = [
   'https://www.googleapis.com/auth/youtube.readonly',
 //   'https://www.googleapis.com/auth/userinfo.profile',
-//   'https://www.googleapis.com/auth/userinfo.email'
+//   'https://www.googleapis.com/auth/userinfo.email',
 ];
 
-const authURL = oauth2Client.generateAuthUrl({
+const googleAuthURL = function (state) {
+	return oauth2Client.generateAuthUrl({
   // 'online' (default) or 'offline' (gets refresh_token)
-	access_type: 'offline',
-	scope: scopes
-});
+		access_type: 'offline',
+		scope: scopes,
+		state: state
+	})
+};
 
 oauth2Client.on('tokens', async (tokens) => {
+	if (!tokens.refresh_token) return
 	try {
-		if (tokens.refresh_token) {
-			const user = await User.findOne({ value: {
-				auths: {
-				  	googleAuth: {
-					  	refresh_token: tokens.refresh_token
-				  	}
-			  	}
-			}})
-			if (!user) return 
-			user.value.auths.googleAuth = {
-				access_token: tokens.access_token,
-				refresh_token: tokens.refresh_token
+		const user = await User.findOne({ value: {
+			auths: {
+				googleAuth: {
+					refresh_token: tokens.refresh_token
+				}
 			}
+		}})
+		if (!user) return
+		if (tokens.access_token) {
+			user.value.auths.googleAuth.access_token = tokens.access_token
 			user.markModified('value')
-			await user.save()
+			user.save()
 		}
 	}
 	catch (e) {
-		console.log('Problem with database updating googleAuth tokens\n\n', e)
+		console.log(`Problem with database updating googleAuth tokens:\n`, e)
 	}
 });
 
@@ -52,19 +55,18 @@ const googleAuth = async function (req, res) {
 	const code = req.query.code
 	if (!code || !key) return res.send('Auth tokens not recived')
 	try {
-		const {tokens} = await oauth2Client.getToken(code)
 		const user = await User.findOne({ key })
-		if (!user) return res.send('Auth tokens not saved')
+		if (!user) return res.send('Authentication tokens not saved')
+		const {tokens} = await oauth2Client.getToken(code)
 		user.value.auths.googleAuth.access_token = tokens.access_token
 		if (tokens.refresh_token) user.value.auths.googleAuth.refresh_token = tokens.refresh_token
 		user.markModified('value')
 		await user.save()
+		res.send('Authenticated, you can close the page now')
 	}
 	catch (e) {
-		console.log('Problem with database using googleAuth\n\n', e)
-		return res.send('Auth tokens not recived')
+		console.log(`Problem with database using googleAuth:\n`, e)
+		res.send('Authentication tokens not recived')
 	}
-
-	res.send('done')
 }
-export { googleAuth, authURL, oauth2Client };
+export { googleAuth, googleAuthURL, oauth2Client, youtube };

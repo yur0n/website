@@ -1,50 +1,42 @@
-const screen = document.querySelector('#screen');
-const result = document.querySelector('#result');
-const buttons = document.querySelectorAll('.action');
-const numbers = document.querySelectorAll('.number');
-let pressed = '';
-let first = '';
+const calc = document.querySelector('#calc');
+const screen = document.querySelector('.screen');
+class Calculator {
+    pressed = '';
+    first = '';
+    constructor(calc, screen) {
+        this.screen = screen;
+        calc.addEventListener('click', this.onClick.bind(this), false);
+    }
+    onClick(e) {
+        if (e.target.id == 'calc') return;
+	if (e.target.className == 'number') return this.screen.value += e.target.textContent;
+	    switch (e.target.id) {
+		case 'numDot': return this.screen.value.includes('.') ? false : this.screen.value += '.';
+		case 'square': return this.screen.value = this.screen.value ** 2;
+		case 'sqrt': return this.screen.value = Math.sqrt(this.screen.value);
+		case 'clear': return this.screen.value = '';
+		case 'equals': return this.equals();
+		case 'reset': return this.reset();
+		default:
+			this.first = this.screen.value;
+			this.screen.value = '';
+			this.pressed = e.target.id;
+	    };
+    };
+    reset() {
+        this.screen.value = '';
+        this.first = '';
+        this.pressed = '';
+    };
+	equals() {
+        switch (this.pressed) {
+            case 'plus': return this.screen.value = +this.first + +this.screen.value;
+            case 'minus': return this.screen.value = this.first - this.screen.value;
+            case 'multiply': return this.screen.value = this.first * this.screen.value;
+            case 'divide': return this.screen.value = this.first / this.screen.value;
+            case 'exp': return this.screen.value = this.first ** this.screen.value;
+        };
+    };
+}
 
-function reset() {
-    screen.value = '';
-    first = 0;
-    pressed = 0;
-};
-function equals() {
-    switch (pressed) {
-            case 'plus': return screen.value = +first + +screen.value;
-            case 'minus': return screen.value = first - screen.value;
-            case 'multiply': return screen.value = first * screen.value;
-            case 'divide': return screen.value = first / screen.value;
-            case 'exp': return screen.value = first ** screen.value;
-        };
-};
-numbers.forEach((number) => {
-    number.addEventListener('click', (e) => {
-        switch (number.id) {
-            case 'num1': return screen.value += '1';
-            case 'num2': return screen.value += '2';
-            case 'num3': return screen.value += '3';
-            case 'num4': return screen.value += '4';
-            case 'num5': return screen.value += '5';
-            case 'num6': return screen.value += '6';
-            case 'num7': return screen.value += '7';
-            case 'num8': return screen.value += '8';
-            case 'num9': return screen.value += '9';
-            case 'num0': return screen.value += '0';
-            case 'numDot': return screen.value += '.';
-            case 'square': return screen.value = screen.value ** 2;
-            case 'sqrt': return screen.value = Math.sqrt(screen.value);
-            case 'equals': return equals();
-            case 'clear': return screen.value = '';
-            case 'reset': return reset();
-        };
-    });
-});
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        first = screen.value;
-        screen.value = '';
-        pressed = button.id;
-    });
-});
+new Calculator(document.querySelector('#calc'), document.querySelector('.screen'))

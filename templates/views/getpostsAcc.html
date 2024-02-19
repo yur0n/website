@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Get Posts Account</title>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" sizes="16x16" rel="noopener" target="_blank"
+		href="/img/getposts/favicon16px.png">
+	<link rel="icon" type="image/png" sizes="32x32" rel="noopener" target="_blank"
+		href="/img/getposts/favicon32px.png">
+	<link rel="icon" type="image/png" sizes="128x128" rel="noopener"
+		target="_blank" href="/img/getposts/favicon128px.png">
+	<link rel="stylesheet" href="/css/getposts.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		div {
+			text-align: center;
+		}
+		html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+		.mySlides {display:none}
+		.w3-tag, .fa {cursor:pointer}
+		.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+	</style>
+</head>
+<body>
+	<h1>Your bots:</h1>
+	<div id="main"></div>
+<script>
+	const app = window.Telegram.WebApp
+	app.expand()
+
+	const main = document.getElementById('main')
+	let id = app.initDataUnsafe.user?.id
+	if (!id) id = new URLSearchParams(window.location.search).get('id')
+	
+	async function getData (id) {
+		try {
+			const res = await fetch(`/api/getpostsData?id=${id}`) //add protection
+			return res.json()
+		} catch (e) {
+			console.log(e)
+			return { error: 'Failed to retrive data' }
+		}
+	}
+
+	async function setPage (id) {
+		let userData = await getData(id)
+		if (userData.error) return main.innerText = userData.error
+		let bots = userData.bots
+		if (!Object.keys(bots).length) {
+			let noBots = document.createElement('p')
+			noBots.innerText = 'You have no bots'
+			main.append(noBots)
+			return
+		}
+		for (const [key, value] of Object.entries(userData.bots)) {
+			let botName = document.createElement('p'),
+				sources = document.createElement('p')
+			let targets = document.createElement('ul'),
+				options = document.createElement('ul'),
+				youtube = document.createElement('ul'), 
+				vk = document.createElement('ul')
+			botName.innerText = key
+			sources.innerText = 'Sources:'
+			targets.innerText = 'Targets:'
+			options.innerText = 'Options:'
+			youtube.innerText = 'Youtube:'
+			vk.innerText = 'VK:'
+			main.append(botName)
+			botName.append(sources, targets, options)
+			sources.append(youtube, vk)
+			value.sources.youtube.forEach(el => {
+				let li = document.createElement('li')
+				li.innerText = el
+				youtube.append(li)
+			})
+			value.sources.vk.forEach(el=> {
+				let li = document.createElement('li')
+				li.innerText = el
+				vk.append(li)
+			})
+			value.targets.forEach(el => {
+				let li = document.createElement('li')
+				li.innerText = el
+				targets.append(li)
+			})
+			// value.options.forEach(el => {
+			// 	let li = document.createElement('li')
+			// 	li.innerText = el
+			// 	options.append(li)
+			// })
+		}
+	}
+	setPage(id)
+// function append_li_from_arr(arr, ul) {
+// 	arr.forEach(li => {
+// 		let liNode = document.createElement('li')
+// 		liNode.innerText = li
+// 		ul.append(liNode)
+// 	})
+// }
+// 	 = document.createElement('p'); //создаем параграф
+//    profName.innerText = `${tg.initDataUnsafe.user.first_name}
+//    ${tg.initDataUnsafe.user.last_name}
+//    ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+//    //выдем имя, "фамилию", через тире username и код языка
+//    usercard.appendChild(profName); //добавляем 
+</script>
+</body>
+</html>
