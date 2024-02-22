@@ -13,8 +13,8 @@ export async function deleteMsgTime(ctx, chat, msg, time = 2500) {
 }
 
 export async function replyAndDel(ctx, text, time = 2500) {
-	await new Promise( async(res) => {
-		const msg = await ctx.reply(text)
+	const msg = await ctx.reply(text)
+	await new Promise((res) => {
 		setTimeout(() => res(ctx.api.deleteMessage(msg.chat.id, msg.message_id)), time)
 	}).catch(e)
 }
