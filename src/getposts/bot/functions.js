@@ -9,7 +9,7 @@ export async function deleteMsg(ctx, chat, msg) {
 export async function deleteMsgTime(ctx, chat, msg, time = 2500) {
 	await new Promise((res) => {
 		setTimeout(() => res(ctx.api.deleteMessage(chat, msg)), time)
-	}).catch(e => console.log(e))
+	}).catch(e)
 }
 
 export async function replyAndDel(ctx, text, time = 2500) {
