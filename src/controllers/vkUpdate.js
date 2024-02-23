@@ -74,5 +74,5 @@ export default async (req, res) => {
         date: new Date,
         dataRecieved: data
     }).save().catch((e) => console.log('Error', e))
-    res.send('ok')
+    res.send('2e19f491')
 }
