@@ -8,7 +8,7 @@ import checkIP from '../controllers/checkIP.js'
 
 router.get('', visit, (req, res) => {
     res.render('index', {
-        title: 'Weather',
+        title: 'Yuri Bilyk',
         name: 'Me',
     })
 })
@@ -21,6 +21,12 @@ router.get('/player', player)
 
 router.get('/ip', checkIP)
 
+router.get('/weather', visit, (req, res) => {
+    res.render('weather', {
+        title: 'Weather',
+        name: 'Me',
+    })
+})
 
 router.get('/chat', (req, res) => {
     res.render('chat', {
@@ -33,29 +39,6 @@ router.get('/gold', (req, res) => {
     res.render('gold', {
         title: 'GoldenShop',
         name: 'Me',
-    })
-})
-
-router.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About Me',
-        name: 'Me'
-    })
-})
-
-router.get('/help', (req, res) => {
-    res.render('help', {
-        mes: 'Help is currently unavailable.',
-        title: 'Help',
-        name: 'Me'
-    })
-})
-
-router.get('/help/*', (req, res) => {
-    res.render('404', {
-        title: "404",
-        mes: 'Help article not found.',
-        name: 'Me'
     })
 })
 
