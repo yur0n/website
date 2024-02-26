@@ -16,9 +16,9 @@ function isCheck() {
 nameForm.addEventListener('submit', (e) => {
     e.preventDefault()
     let bonus = isCheck()
-    if(!bonus || !input.value) return message.textContent = 'Выберите товар и введите имя'
-    message.textContent = `Спасибо за покупку, ${input.value}! Вам были начислены бонусы.`
-    message1.textContent = "Для просмотра баланса бонусов, отправьте GOLDENBOT'у своё имя."
+    if(!bonus || !input.value) return message.textContent = 'Choose a product and enter your name'
+    message.textContent = `Thank you for the purchase, ${input.value}! Bonuses have been awarded to you.`
+    message1.textContent = "To view your bonus balance, send GOLDENBOT your name."
     setTimeout( () => {
         message.textContent = ` `
         message1.textContent = ` `
