@@ -24,21 +24,21 @@ export async function addBot(conversation, ctx) {
 	});
 	ctx = await conversation.wait();
 	if (ctx.update.callback_query?.data) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return
 	}
 	for (let bot in ctx.session.bots) {
 		if (ctx.session.bots[bot].token === ctx.message.text) {
-			await deleteMsg(ctx, ask.chat.id, ask.message_id)
+			deleteMsg(ctx, ask.chat.id, ask.message_id)
 			return replyAndDel(ctx, `ℹ️ You've added this bot already`)
 		}
 	}
 	if (await checkToken(ctx)) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		replyAndDel(ctx, '✅ Bot Added!')
 	}
 	else {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		replyAndDel(ctx, '⛔ Wrong TOKEN')
 	}
 }
@@ -52,29 +52,29 @@ export async function addSource(conversation, ctx) {
 	});
 	ctx = await conversation.wait();
 	if (ctx.update.callback_query?.data) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return
 	}
 	let source = ctx.msg.text
 	if (current !== 'youtube') {
 		if (!source.match(linkReg)) {
-			await deleteMsg(ctx, ask.chat.id, ask.message_id)
+			deleteMsg(ctx, ask.chat.id, ask.message_id)
 			return replyAndDel(ctx, `⛔ Wrong link format`)
 		}
 		source = source.split("/")[3]
 	}
 	if (current === 'youtube') {
 		if(!source.match(/^UC[a-zA-Z0-9-]{15,25}$/)) {
-			await deleteMsg(ctx, ask.chat.id, ask.message_id)
+			deleteMsg(ctx, ask.chat.id, ask.message_id)
 			return replyAndDel(ctx, `⛔ Wrong Channel ID`)
 		}
 	}
 	if (ctx.session.bots[ctx.session.current.bot].sources[current].includes(source)) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return replyAndDel(ctx, `ℹ️ You've added this source already`)
 	}
 	ctx.session.bots[ctx.session.current.bot].sources[current].push(source)
-	await deleteMsg(ctx, ask.chat.id, ask.message_id)
+	deleteMsg(ctx, ask.chat.id, ask.message_id)
 	replyAndDel(ctx, '✅ Source Added!')
 }
 
@@ -85,24 +85,24 @@ export async function addTarget(conversation, ctx) {
 	});
 	ctx = await conversation.wait();
 	if (ctx.callbackQuery?.data) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return
 	}
 	if (!ctx.message.text.match(linkReg)) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return replyAndDel(ctx, `⛔ Wrong link format`)
 	}
 	const target = "@" + ctx.msg.text.split("/")[3]
 	if (ctx.session.bots[ctx.session.current.bot].targets.includes(target)) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return replyAndDel(ctx, `ℹ️ You've added this target already`)
 	}
 	if (!await isAdmin(ctx, target)) {
-		await deleteMsg(ctx, ask.chat.id, ask.message_id)
+		deleteMsg(ctx, ask.chat.id, ask.message_id)
 		return replyAndDel(ctx, `ℹ️ Bot is not an admin of the group/channel`, 6000)
 	}
 	ctx.session.bots[ctx.session.current.bot].targets.push(target)
-	await deleteMsg(ctx, ask.chat.id, ask.message_id)
+	deleteMsg(ctx, ask.chat.id, ask.message_id)
 	return replyAndDel(ctx, '✅ Target Added!')
 }
 
@@ -114,5 +114,5 @@ export async function confirm(conversation, ctx) {
 	if (ctx.callbackQuery.data === '⚠️ Yes, DELETE!') {
 		delete ctx.session.bots[ctx.session.current.bot]
 	}
-	await deleteMsg(ctx, ask.chat.id, ask.message_id)
+	deleteMsg(ctx, ask.chat.id, ask.message_id)
 }
