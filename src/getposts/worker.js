@@ -30,14 +30,14 @@ async function worker() {
 				if (googleTokens?.refresh_token) {
 					bots[bot].sources.youtube.forEach( source => {
 						bots[bot].targets.forEach(async target => {
-							await youtubeWork(source, target, botToken, options)
+							youtubeWork(source, target, botToken, options)
 						})
 					})
 				}
 				if (vkToken) {
 					bots[bot].sources.vk.forEach( source => {
 						bots[bot].targets.forEach(async target => {
-							await vkWork(source, target, botToken, vkToken, options)
+							vkWork(source, target, botToken, vkToken, options)
 						})
 					})
 				}
