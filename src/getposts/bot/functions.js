@@ -35,7 +35,8 @@ export async function isAdmin(ctx, chat_id) {
 }
 
 export async function checkToken(ctx) {
-	const ok = ctx.message.text.match(/^[0-9]{8,10}:[a-zA-Z0-9_-]{35}$/)
+	const token = ctx.message.text
+	const ok = token.match(/^[0-9]{8,10}:[a-zA-Z0-9_-]{35}$/)
 	if (!ok) return false
 	return await axios.get(`https://api.telegram.org/bot${token}/getMe`)
 		.then(async (res) => {
