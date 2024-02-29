@@ -1,21 +1,21 @@
 import axios from "axios"
 
 export async function deleteMsg(ctx, chat, msg) {
-	await new Promise((res) => {
-		ctx.api.deleteMessage(chat, msg)
+	await new Promise(async (res) => {
+		await ctx.api.deleteMessage(chat, msg)
 	}).catch()
 }
 
 export async function deleteMsgTime(ctx, chat, msg, time = 2500) {
-	await new Promise((res) => {
-		setTimeout(() => res(ctx.api.deleteMessage(chat, msg)), time)
+	await new Promise(async(res) => {
+		setTimeout(() => res(await ctx.api.deleteMessage(chat, msg)), time)
 	}).catch()
 }
 
 export async function replyAndDel(ctx, text, time = 2500) {
 	const msg = await ctx.reply(text)
-	await new Promise((res) => {
-		setTimeout(() => res(ctx.api.deleteMessage(msg.chat.id, msg.message_id)), time)
+	await new Promise(async(res) => {
+		setTimeout(() => res(await ctx.api.deleteMessage(msg.chat.id, msg.message_id)), time)
 	}).catch()
 }
 
