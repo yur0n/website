@@ -17,9 +17,6 @@ bot.command('start', async ctx => {
 })
 
 bot.on('message',  async ctx => {
-    if (ctx.msg.text == '/start') {
-        ctx.reply 
-    }
     let user = await Golduser.findOne({name: ctx.msg.text})
     if (!user) {
         ctx.reply(`${ctx.msg.text} не зробив жодної покупки. Введіть інше імʼя.`)
