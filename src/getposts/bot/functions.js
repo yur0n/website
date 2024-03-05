@@ -1,29 +1,26 @@
 import axios from "axios"
 
-export function deleteMsg(ctx, chat, msg) {
-	new Promise(async (res) => {
+export async function deleteMsg(ctx, chat, msg) {
+	try {
 		await ctx.api.deleteMessage(chat, msg)
-		res()
-	}).catch()
+	} catch (e) {}
 }
 
-export function deleteMsgTime(ctx, chat, msg, time = 2500) {
-	new Promise((res) => {
-		setTimeout(async () => {
-			await ctx.api.deleteMessage(chat, msg)
-			res()
-		}, time)
-	}).catch()
+export async function deleteMsgTime(ctx, chat, msg, time = 2500) {
+	setTimeout(async () => {
+		try {
+			await ctx.api.deleteMessage(chat, msg);
+		} catch (e) {}
+	}, time);
 }
 
 export async function replyAndDel(ctx, text, time = 2500) {
 	const msg = await ctx.reply(text)
-	new Promise((res) => {
-		setTimeout(async() => {
+	setTimeout(async () => {
+		try {
 			await ctx.api.deleteMessage(msg.chat.id, msg.message_id)
-			res()
-		}, time)
-	}).catch()
+		} catch (e) {}
+	}, time)
 }
 
 export async function isAdmin(ctx, chat_id) {
