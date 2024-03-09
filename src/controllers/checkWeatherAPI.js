@@ -4,7 +4,8 @@ import forecast from '../utils/forecast.js';
 
 export default async (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip
-    const geo = geoip.lookup(ip)                                                                  
+    const geo = geoip.lookup(ip)
+	console.log('Address: ' + !req.query.address, '\nGeo info: ' + ip)
     if (!req.query.address && !geo) return res.send({error: 'You must provide an address'})                                    
     let position = await geocode(req.query.address || geo.city)
     if (!position.latitude) return res.send({error: position})
