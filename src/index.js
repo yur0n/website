@@ -10,16 +10,16 @@ app.listen(port, () => {
     console.log('Server is up on port: ' + port);
 })
 
-// // Certs
-// const privateKey = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_private.key.pem'), 'utf8');
-// const certificate = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_domain.cert.pem'), 'utf8');
-// // const ca = fs.readFileSync(path.join(import.meta.dirname, '../certs/authenticated_origin_pull_ca.pem'), 'utf8');
-// const credentials = {
-// 	key: privateKey,
-// 	cert: certificate,
-// 	// ca: ca
-// };
-const credentials = {}
+// Certs
+const privateKey = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_private.key.pem'), 'utf8');
+const certificate = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_domain.cert.pem'), 'utf8');
+// const ca = fs.readFileSync(path.join(import.meta.dirname, '../certs/authenticated_origin_pull_ca.pem'), 'utf8');
+const credentials = {
+	key: privateKey,
+	cert: certificate,
+	// ca: ca
+};
+
 const httpsServer = https.createServer(credentials, app);
 
 const server = httpsServer.listen(portTls, () => {
