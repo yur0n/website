@@ -1,7 +1,7 @@
 import geoip from 'geoip-lite'
 
 export default (req, res) => {
-    let ip = req.socket.remoteAddress || req.ip || 'no IP'
+    let ip = req.headers['CF-Connecting-IP'] // req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip || 'no IP'
     if (ip.includes("::ffff:")) ip = ip.substring(7)
     if (ip == '::1') {          // So it can properly work on localhost
         ip = '93.77.79.107'      // So it can properly work on localhost
