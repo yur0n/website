@@ -6,7 +6,7 @@ import socket from './socket.js';
 const port = process.env.PORT || 3000;
 const portTls = process.env.PORT_TLS || 443;
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log('Server is up on port: ' + port);
 })
 
@@ -19,10 +19,11 @@ const server = app.listen(port, () => {
 // 	cert: certificate,
 // 	// ca: ca
 // };
-// const httpsServer = https.createServer(credentials, app);
+const credentials = {}
+const httpsServer = https.createServer(credentials, app);
 
-// const server = httpsServer.listen(portTls, () => {
-// 	console.log('HTTPS Server running on port: ' + portTls);
-// });
+const server = httpsServer.listen(portTls, () => {
+	console.log('HTTPS Server running on port: ' + portTls);
+});
 
 socket(server);
