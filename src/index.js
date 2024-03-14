@@ -6,9 +6,10 @@ import socket from './socket.js';
 const port = process.env.PORT || 3000;
 const portTls = process.env.PORT_TLS || 443;
 
-app.listen(port, () => {
-    console.log('Server is up on port: ' + port);
-})
+// HTTP server
+// app.listen(port, () => {
+//     console.log('Server is up on port: ' + port);
+// })
 
 // Certs
 const privateKey = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_private.key.pem'), 'utf8');
