@@ -14,7 +14,7 @@ bot.on('message',  ctx => {
 })
 bot.start()
 
-const rudi = 267424833   // chat id
+const rudi = 378931386 // 267424833   // chat id
 const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of parameters for bot.api.sendMessage command
     return {                                    // url1 = link to от кого, url2 = link to подробнее
         parse_mode: 'Markdown',                 
