@@ -29,9 +29,10 @@ export default async (req, res) => {
     const data = req.body;
     try {
         const restricted = [441232274, -124949590]
-        if (restricted.includes(data.object?.from_id)) return     
+        if (restricted.includes(data.object?.from_id)) return
         switch (data.type) {
             case 'wall_reply_new':
+                        console.log(data.type)
                 await bot.api.sendMessage(rudi, 'Добавление комментария на стене:')
                 await bot.api.sendMessage(rudi, data.object.text, inlineKeyboard
                     (`https://vk.com/id${data.object.from_id}`, `https://vk.com/sib_herb?w=wall-124949590_${data.object.post_id}`))
