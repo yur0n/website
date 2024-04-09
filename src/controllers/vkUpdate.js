@@ -29,7 +29,9 @@ export default async (req, res) => {
     const data = req.body;
     try {
         const restricted = [441232274, -124949590]
+        console.log(data)
         if (restricted.includes(data.object?.from_id)) return
+        console.log(data)
         switch (data.type) {
             case 'wall_reply_new':
                         console.log(data.type)
