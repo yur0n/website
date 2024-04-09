@@ -14,7 +14,7 @@ bot.on('message',  ctx => {
 })
 bot.start()
 
-const rudi = 378931386 // 267424833   // chat id
+const rudi = 267424833
 const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of parameters for bot.api.sendMessage command
     return {                                    // url1 = link to от кого, url2 = link to подробнее
         parse_mode: 'Markdown',                 
@@ -29,12 +29,9 @@ export default async (req, res) => {
     const data = req.body;
     try {
         const restricted = [441232274, -124949590]
-        console.log(data)
         if (restricted.includes(data.object?.from_id)) return
-        console.log(data)
         switch (data.type) {
             case 'wall_reply_new':
-                        console.log(data.type)
                 await bot.api.sendMessage(rudi, 'Добавление комментария на стене:')
                 await bot.api.sendMessage(rudi, data.object.text, inlineKeyboard
                     (`https://vk.com/id${data.object.from_id}`, `https://vk.com/sib_herb?w=wall-124949590_${data.object.post_id}`))
