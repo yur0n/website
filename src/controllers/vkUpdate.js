@@ -80,6 +80,7 @@ export default async (req, res) => {
             dataRecieved: data
         }).save()  
     } catch(e) {
+        console.log(e)
         await bot.api.sendMessage(rudi, 'Ошибка обработки события, необходимо связаться с yur0n')
         bot.api.sendMessage(rudi, '➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖')
     }
