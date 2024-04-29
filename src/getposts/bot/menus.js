@@ -5,7 +5,7 @@ import { Menu } from "@grammyjs/menu"
 const menuKey = new Menu('main-menu')
 	.submenu('|      🤖 My Bots      |', 'bots-menu')
 	.submenu('|  🔑 Authentication   |', 'auths-menu').row()
-	.webApp('Your account', 'https://yuron.xyz/getposts/account')
+	.webApp('Your account', 'https://yuron.dev/getposts/account')
 
 const authsKey = new Menu('auths-menu')
 	.dynamic((ctx, range) => {
@@ -13,7 +13,7 @@ const authsKey = new Menu('auths-menu')
 		const vkLink = process.env.VK_AUTH_LINK + ctx.from.id
 		range
       		.url('🆔 Authenticate with Google account', ytLink).row()
-			.url('🆔 VK', vkLink)
+		.url('🆔 Authenticate with VK', vkLink)
 	}).row()
 	.back('⬅️ Go back')
 
