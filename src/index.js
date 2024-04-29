@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 const portTls = process.env.PORT_TLS || 443;
 
 import './database/connection.js'
-BOTS                             
+// BOTS                             
 import './getposts/bot.js'
 import './getposts/worker.js'
 
