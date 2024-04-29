@@ -27,12 +27,13 @@ router.get('', (req, res) => {
         case 'contact':
             res.sendFile(path.join(import.meta.dirname, '../../templates/views/portfolioContact.html'))
             break
-    }
-    res.render('404', {
+        default:
+            res.render('404', {
                 title: "404",
                 mes: 'Page not found',
                 name: 'Me'
             })
+    }
 })
 
 router.use('/api', apiRoute)
