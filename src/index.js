@@ -6,12 +6,17 @@ import socket from './socket.js';
 const port = process.env.PORT || 3000;
 const portTls = process.env.PORT_TLS || 443;
 
-// HTTP server
-app.listen(port, () => {
-    console.log('Server is up on port: ' + port);
-})
+import './database/connection.js'
+BOTS                             
+import './getposts/bot.js'
+import './getposts/worker.js'
 
-// Certs
+// HTTP server
+// app.listen(port, () => {
+//     console.log('Server is up on port: ' + port);
+// })
+
+// // Certs
 const privateKey = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_private.key.pem'), 'utf8');
 const certificate = fs.readFileSync(path.join(import.meta.dirname, '../certs/cdn_domain.cert.pem'), 'utf8');
 // const ca = fs.readFileSync(path.join(import.meta.dirname, '../certs/authenticated_origin_pull_ca.pem'), 'utf8');

@@ -249,7 +249,7 @@ document.querySelector('#askus-form').addEventListener('submit', async e => {
 		email: {value: email},
 		name: {value: name}, 
 		message: {value: message}
-	} = e.srcElement.elements
+	} = e.target
 	const res = await fetch('/getposts', {
 		method: 'POST', 
 		headers: { "Content-Type": "application/json"},

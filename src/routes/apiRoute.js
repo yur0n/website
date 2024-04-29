@@ -6,6 +6,7 @@ import goldShopAPI from '../controllers/goldShopAPI.js';
 import vkUpdate from '../controllers/vkUpdate.js';
 import getpostsData from '../controllers/getpostsData.js';
 import vkMessages from '../models/messages.js';
+import portfolio from '../controllers/portfolio.js';
 
 const router = Router();
 
@@ -18,6 +19,7 @@ router.get('/vk', async (req, res) => {
     res.send(await vkMessages.find({}));
 });
 
+router.post('/portfolio', portfolio);
 router.post('/vk', vkUpdate);
 
 export default router;
