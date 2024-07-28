@@ -62,7 +62,6 @@ const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of 
 
 export default async (req, res) => {
     const data = req.body;
-    console.log(data)
     try {
         const restricted = [441232274] // const restricted = [441232274, ...Object.values(ids).map(id => '-' + id)]
         if (restricted.includes(data.object?.from_id)) return
