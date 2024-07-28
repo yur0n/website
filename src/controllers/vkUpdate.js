@@ -1,9 +1,11 @@
-import { Bot, InlineKeyboard } from 'grammy'
+import { Bot, session, InlineKeyboard } from 'grammy'
 import { conversations, createConversation } from '@grammyjs/conversations';
 import DataVK from '../models/messages.js';
 
 const bot = new Bot(process.env.BOT_VK_RUDI)
-
+bot.use(session({ 
+	initial: () => ({ ids: { '124949590': 'Травница' }, confirmationCode: '' })
+})) 
 bot.use(conversations());
 bot.use(createConversation(addGroup));
 bot.use(createConversation(addCode));
