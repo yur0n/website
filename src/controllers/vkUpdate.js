@@ -1,10 +1,12 @@
 import { Bot, session, InlineKeyboard } from 'grammy'
 import { conversations, createConversation } from '@grammyjs/conversations';
+import { freeStorage } from "@grammyjs/storage-free";
 import DataVK from '../models/messages.js';
 
 const bot = new Bot(process.env.BOT_VK_RUDI)
 bot.use(session({ 
-	initial: () => ({ ids: { '124949590': 'Травница' }, confirmationCode: '' })
+	initial: () => ({ ids: { '124949590': 'Травница' }, confirmationCode: '' }),
+    storage: freeStorage(bot.token)
 })) 
 bot.use(conversations());
 bot.use(createConversation(addGroup));
@@ -12,6 +14,8 @@ bot.use(createConversation(addCode));
 bot.api.setMyCommands([{ command: 'start', description: 'Меню' } ]);
 
 const replyMenu = (ctx) => {
+    ids = ctx.session.ids
+    confirmationCode =  ctx.session.confirmationCode
     return ctx.reply('Главное меню', {
         reply_markup: new InlineKeyboard()
         .text('Добавить группу')
@@ -25,8 +29,6 @@ let ids = {
 }
 
 bot.command('start',  async ctx => {
-    ids = ctx.session.ids
-    confirmationCode =  ctx.session.confirmationCode
     await ctx.reply('Я буду автоматически присылать новую информацию о твоей группе.')
     replyMenu(ctx)
     return
