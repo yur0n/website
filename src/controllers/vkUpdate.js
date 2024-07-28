@@ -21,7 +21,7 @@ const ids = {
     '124949590': 'Травница'
 }
 
-bot.command('start',  asyncctx => {
+bot.command('start',  async ctx => {
     await ctx.reply('Я буду автоматически присылать новую информацию о твоей группе.')
     replyMenu()
     return
