@@ -9,6 +9,7 @@ bot.use(session({
 bot.use(conversations());
 bot.use(createConversation(addGroup));
 bot.use(createConversation(addCode));
+bot.api.setMyCommands([{ command: 'start', description: 'Меню' } ]);
 
 const replyMenu = (ctx) => {
     return ctx.reply('Главное меню', {
