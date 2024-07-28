@@ -54,7 +54,7 @@ const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of 
         parse_mode: 'Markdown',                 
         reply_markup: new InlineKeyboard()
         .url('От кого', url1)
-        .url('Подробнее', ul2)
+        .url('Подробнее', url2)
     }
 }  
 
