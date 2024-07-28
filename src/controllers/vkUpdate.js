@@ -114,7 +114,7 @@ export default async (req, res) => {
 }
 
 
-async function addCode(conversation: any, ctx: any) {
+async function addCode(conversation, ctx) {
 	try {
 		ctx.reply('Введи строку подтверждения из VK', {
 			parse_mode: "HTML",
@@ -136,7 +136,7 @@ async function addCode(conversation: any, ctx: any) {
 	}
 }
 
-async function addGroup(conversation: any, ctx: any) {
+async function addGroup(conversation, ctx) {
 	try {
 		ctx.reply('Введи ID группы', {
 			parse_mode: "HTML",
