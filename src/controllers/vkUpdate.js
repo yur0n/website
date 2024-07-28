@@ -5,8 +5,8 @@ import DataVK from '../models/messages.js';
 const bot = new Bot(process.env.BOT_VK_RUDI)
 
 bot.use(conversations());
-bot.use(createConversation(code));
-bot.use(createConversation(addClientInfo));
+bot.use(createConversation(addGroup));
+bot.use(createConversation(addCode));
 
 const replyMenu = () => {
     return ctx.reply('Главное меню', {
@@ -31,10 +31,10 @@ bot.on('callback_query', async (ctx, next) => {
 	await ctx.answerCallbackQuery();
 	const callback = ctx.update.callback_query;
 	if (callback?.data == 'Добавить группу') {
-		await ctx.conversation.enter('code')
+		await ctx.conversation.enter('addGroup')
 	}
 	if (callback?.data == 'Добавить код подтверждения') {
-        await ctx.conversation.enter('code')
+        await ctx.conversation.enter('addCode')
 	} 
 	next();
 });
@@ -114,7 +114,7 @@ export default async (req, res) => {
 }
 
 
-async function code(conversation: any, ctx: any) {
+async function addCode(conversation: any, ctx: any) {
 	try {
 		ctx.reply('Введи строку подтверждения из VK', {
 			parse_mode: "HTML",
@@ -136,7 +136,7 @@ async function code(conversation: any, ctx: any) {
 	}
 }
 
-async function code(conversation: any, ctx: any) {
+async function addGroup(conversation: any, ctx: any) {
 	try {
 		ctx.reply('Введи ID группы', {
 			parse_mode: "HTML",
