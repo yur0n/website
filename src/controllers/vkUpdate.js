@@ -127,8 +127,7 @@ async function addCode(conversation, ctx) {
 		const callback = ctx.update.callback_query
 		if (callback?.data == '❌ Отменить') {
 			await ctx.answerCallbackQuery();
-			await deleteMsg(ctx, callback?.from.id, callback?.message.message_id)
-			return;
+			return replyMenu(ctx);
 		}
         confirmationCode = ctx.msg.text
         await ctx.reply('Строка для подтверждения сервера сохранена!');
@@ -150,8 +149,7 @@ async function addGroup(conversation, ctx) {
 		const callback = ctx.update.callback_query
 		if (callback?.data == '❌ Отменить') {
 			await ctx.answerCallbackQuery();
-			await deleteMsg(ctx, callback?.from.id, callback?.message.message_id)
-			return;
+			return replyMenu(ctx);
 		}
         const groupId = ctx.msg.text;
         await ctx.reply('Введи название группы (не имеет значения, любое)');
