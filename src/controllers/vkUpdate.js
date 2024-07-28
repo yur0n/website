@@ -20,17 +20,21 @@ const replyMenu = (ctx) => {
 }
 
 let confirmationCode = ''
-const ids = {
+let ids = {
     '124949590': 'Травница'
 }
 
 bot.command('start',  async ctx => {
+    ids = ctx.session.ids
+    confirmationCode =  ctx.session.confirmationCode
     await ctx.reply('Я буду автоматически присылать новую информацию о твоей группе.')
     replyMenu(ctx)
     return
 })
 
 bot.on('callback_query', async (ctx, next) => {
+    ids = ctx.session.ids
+    confirmationCode =  ctx.session.confirmationCode
 	await ctx.answerCallbackQuery();
 	const callback = ctx.update.callback_query;
 	if (callback?.data == 'Добавить группу') {
@@ -131,6 +135,7 @@ async function addCode(conversation, ctx) {
 			return replyMenu(ctx);
 		}
         confirmationCode = ctx.msg.text
+        ctx.session.confirmationCode = ctx.msg.text
         await ctx.reply('Строка для подтверждения сервера сохранена!');
         replyMenu(ctx)
 	} catch (e) {
@@ -157,6 +162,7 @@ async function addGroup(conversation, ctx) {
         ctx = await conversation.wait();
         const groupName = ctx.msg.text;
         ids[groupId] = groupName;
+        ctx.session.ids[groupId] = groupName;
         await ctx.reply('Группа добавлена!');
         replyMenu(ctx)
 	} catch (e) {
