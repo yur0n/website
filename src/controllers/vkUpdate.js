@@ -10,7 +10,7 @@ bot.use(conversations());
 bot.use(createConversation(addGroup));
 bot.use(createConversation(addCode));
 
-const replyMenu = () => {
+const replyMenu = (ctx) => {
     return ctx.reply('Главное меню', {
         reply_markup: new InlineKeyboard()
         .text('Добавить группу')
@@ -25,7 +25,7 @@ const ids = {
 
 bot.command('start',  async ctx => {
     await ctx.reply('Я буду автоматически присылать новую информацию о твоей группе.')
-    replyMenu()
+    replyMenu(ctx)
     return
 })
 
@@ -131,7 +131,8 @@ async function addCode(conversation, ctx) {
 			return;
 		}
         confirmationCode = ctx.msg.text
-        ctx.reply('Строка для подтверждения сервера сохранена!');
+        await ctx.reply('Строка для подтверждения сервера сохранена!');
+        replyMenu(ctx)
 	} catch (e) {
 		console.log(e)
 		ctx.reply('❌ Ошибка, попробуйте снова!')
@@ -157,7 +158,8 @@ async function addGroup(conversation, ctx) {
         ctx = await conversation.wait();
         const groupName = ctx.msg.text;
         ids[groupId] = groupName;
-        ctx.reply('Группа добавлена!');
+        await ctx.reply('Группа добавлена!');
+        replyMenu(ctx)
 	} catch (e) {
 		console.log(e)
 		ctx.reply('❌ Ошибка, попробуйте снова!')
