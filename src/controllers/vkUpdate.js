@@ -63,7 +63,7 @@ const inlineKeyboard = (url1, url2) => {        // inline keyboard as object of 
 export default async (req, res) => {
     const data = req.body;
     try {
-        const restricted = [441232274, ...Object.values(ids).map(id => '-' + id)]
+        const restricted = [441232274, ...Object.values(ids).map(id => id * -1)]
         if (restricted.includes(data.object?.from_id)) return
         const id = data.group_id
         switch (data.type) {
