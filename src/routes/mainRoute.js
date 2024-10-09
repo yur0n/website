@@ -19,13 +19,13 @@ router.get('', (req, res) => {
     const query = Object.keys(req.query)[0]
     switch (query) {
         case undefined:
-            res.sendFile(path.join(import.meta.dirname, '../../templates/views/portfolioMain.html'))
+            res.sendFile(path.join(import.meta.dirname, '/templates/views/portfolioMain.html'))
             break
         case 'resume':
-            res.sendFile(path.join(import.meta.dirname, '../../public/files/resume.pdf'))
+            res.sendFile(path.join(import.meta.dirname, '/public/files/resume.pdf'))
             break
         case 'contact':
-            res.sendFile(path.join(import.meta.dirname, '../../templates/views/portfolioContact.html'))
+            res.sendFile(path.join(import.meta.dirname, '/templates/views/portfolioContact.html'))
             break
         default:
             res.render('404', {
